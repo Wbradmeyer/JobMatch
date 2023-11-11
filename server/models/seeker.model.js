@@ -28,29 +28,11 @@ const SeekerSchema = new mongoose.Schema(
             type: String,
             required: [true, "Please enter the Bio"]
         },
-        java: {
-            type: Boolean
+        languages: {
+            type: Array
         },
-        js: {
-            type: Boolean
-        },
-        python: {
-            type: Boolean
-        },
-        typeScript: {
-            type: Boolean
-        },
-        flask: {
-            type: Boolean
-        },
-        django: {
-            type: Boolean
-        },
-        springBoot: {
-            type: Boolean
-        },
-        react: {
-            type: Boolean
+        frameworks: {
+            type: Array
         }
     },{ timestamps: true }
 )

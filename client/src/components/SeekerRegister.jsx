@@ -42,7 +42,7 @@ const SeekerRegister = () => {
     e.preventDefault()
 
     axios
-      .post('', seekerUser, {withCredentials: true})
+      .post('http://localhost:8000/seeker/register', seekerUser, {withCredentials: true})
       .then((res) => {
         console.log(res.data)
         localStorage.setItem('currentUser', JSON.stringify(res.data))
@@ -75,38 +75,38 @@ const SeekerRegister = () => {
             <p>Languages</p>
             <div>
               <label htmlFor="java">Java</label>
-              <input type="checkbox" value={java} id='java' name='java' onChange={handleLanguagesCheckedBoxes}/>
+              <input type="checkbox" value='java' id='java' name='java' onChange={handleLanguagesCheckedBoxes}/>
             </div>
             <div>
               <label htmlFor="javaScript">JavaScript</label>
-              <input type="checkbox" value={javaScript} id='javaScript' name='javaScript' onChange={handleLanguagesCheckedBoxes}/>
+              <input type="checkbox" value='javaScript' id='javaScript' name='javaScript' onChange={handleLanguagesCheckedBoxes}/>
             </div>
             <div>
               <label htmlFor="python">Python</label>
-              <input type="checkbox" value={python} id='python' name='python' onChange={handleLanguagesCheckedBoxes}/>
+              <input type="checkbox" value='python' id='python' name='python' onChange={handleLanguagesCheckedBoxes}/>
             </div>
             <div>
               <label htmlFor="typeScript">TypeScript</label>
-              <input type="checkbox" value={typeScript} id='typeScript' name='typeScript' onChange={handleLanguagesCheckedBoxes}/>
+              <input type="checkbox" value='typeScript' id='typeScript' name='typeScript' onChange={handleLanguagesCheckedBoxes}/>
             </div>
           </div>
           <div>
           <p>Frameworks</p>
             <div>
               <label htmlFor="flask">Flask</label>
-              <input type="checkbox" value={flask} id='flask' name='flask' onChange={handleFrameworksCheckedBoxes}/>
+              <input type="checkbox" value='flask' id='flask' name='flask' onChange={handleFrameworksCheckedBoxes}/>
             </div>
             <div>
               <label htmlFor="django">Django</label>
-              <input type="checkbox" value={django} id='django' name='django' onChange={handleFrameworksCheckedBoxes}/>
+              <input type="checkbox" value='django' id='django' name='django' onChange={handleFrameworksCheckedBoxes}/>
             </div>
             <div>
               <label htmlFor="springBoot">SpringBoot</label>
-              <input type="checkbox" value={springBoot} id='springBoot' name='springBoot' onChange={handleFrameworksCheckedBoxes}/>
+              <input type="checkbox" value='springBoot' id='springBoot' name='springBoot' onChange={handleFrameworksCheckedBoxes}/>
             </div>
             <div>
               <label htmlFor="react">React</label>
-              <input type="checkbox" value={react} id='react' name='react' onChange={handleFrameworksCheckedBoxes}/>
+              <input type="checkbox" value='react' id='react' name='react' onChange={handleFrameworksCheckedBoxes}/>
             </div>
           </div>
           <button>Register</button>
