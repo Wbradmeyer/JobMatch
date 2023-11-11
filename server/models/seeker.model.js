@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt')
+const { isEmail } = require('validator')
 
 const SeekerSchema = new mongoose.Schema(
     {
@@ -16,10 +18,6 @@ const SeekerSchema = new mongoose.Schema(
             required: [true, "Password can not be blank"],
             minlength: [7, "Password must be at least 7 characters"]
         },
-        confirm_password : {
-            type : String,
-            required : true,
-        },
         location: {
             type: String,
             required: [true, "Please give the Location of Job seeker"]
@@ -28,32 +26,33 @@ const SeekerSchema = new mongoose.Schema(
             type: String,
             required: [true, "Please enter the Bio"]
         },
-        java: {
-            type: Boolean
+        languages: {
+            type: Array
         },
-        js: {
-            type: Boolean
-        },
-        python: {
-            type: Boolean
-        },
-        typeScript: {
-            type: Boolean
-        },
-        flask: {
-            type: Boolean
-        },
-        django: {
-            type: Boolean
-        },
-        springBoot: {
-            type: Boolean
-        },
-        react: {
-            type: Boolean
+        frameworks: {
+            type: Array
         }
     },{ timestamps: true }
 )
+
+SeekerSchema.virtual('confirmPassword')
+.get(() => this.confirmPassword)
+.set((value) => this.confirmPassword = value)
+
+SeekerSchema.pre('validate', function(next) {
+    if (this.password !== this.confirmPassword) {
+        this.invalidate('confirmPassword', 'Password must match confirm password');
+    }
+    next();
+});
+
+SeekerSchema.pre('save', function(next) {
+    bcrypt.hash(this.password, 10)
+        .then(hash => {
+            this.password = hash;
+            next();
+        });
+});
 
 const Seeker = mongoose.model('Seeker', SeekerSchema)
 module.exports = Seeker

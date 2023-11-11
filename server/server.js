@@ -20,6 +20,6 @@ allJobRoutes(app);
 const allCompanyRoutes = require('./routes/company.routes')
 allCompanyRoutes(app);
 
-app.listen(4500, () => {
+app.listen(8000, () => {
     console.log("server is started at 4500")
 })

@@ -8,33 +8,18 @@ const JobSchema = new mongoose.Schema(
             minlength: [4, "Job Title must be unique and contain 4 characters"]
             
         },
-        java: {
-            type: Boolean
+        languages: {
+            type: Array
         },
-        js: {
-            type: Boolean
-        },
-        python: {
-            type: Boolean
-        },
-        typeScript: {
-            type: Boolean
-        },
-        flask: {
-            type: Boolean
-        },
-        django: {
-            type: Boolean
-        },
-        springBoot: {
-            type: Boolean
-        },
-        react: {
-            type: Boolean
+        frameworks: {
+            type: Array
         },
         description: {
             type: String,
             required: [true, "Please give the description"]
+        },
+        companyId: {
+            type: String
         }
     },{ timestamps: true }
 )

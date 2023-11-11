@@ -17,10 +17,6 @@ const CompanySchema = new mongoose.Schema(
             required: [true, "Password can not be blank"],
             minlength: [7, "Password must be at least 7 characters"]
         },
-        confirm_password : {
-            type : String,
-            required : true,
-        },
         location: {
             type: String,
             required: [true, "Please give the Location of Job seeker"]
@@ -31,6 +27,26 @@ const CompanySchema = new mongoose.Schema(
         }
     },{ timestamps: true }
 )
+
+CompanySchema.virtual('confirmPassword')
+.get(() => this.confirmPassword)
+.set((value) => this.confirmPassword = value)
+
+CompanySchema.pre('validate', function(next) {
+    if (this.password !== this.confirmPassword) {
+        this.invalidate('confirmPassword', 'Password must match confirm password');
+    }
+    next();
+});
+
+CompanySchema.pre('save', function(next) {
+    bcrypt.hash(this.password, 10)
+        .then(hash => {
+            this.password = hash;
+            next();
+        });
+});
+
 
 const Company = mongoose.model('Company', CompanySchema)
 module.exports = Company
