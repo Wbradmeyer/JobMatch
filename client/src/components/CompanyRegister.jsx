@@ -24,7 +24,9 @@ const CompanyRegister = () => {
     e.preventDefault();
 
     axios
-      .post("", companyUser, { withCredentials: true })
+      .post("http://localhost:8000/company/register", companyUser, {
+        withCredentials: true,
+      })
       .then((res) => {
         console.log(res.data);
         localStorage.setItem("currentUser", JSON.stringify(res.data));

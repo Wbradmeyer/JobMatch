@@ -4,12 +4,12 @@ import { useNavigate, Link } from "react-router-dom";
 
 const CompanyDashboard = () => {
   const navigate = useNavigate();
-  const [allJobPosts, setAllJobPosts] = useState([]);
+  const [allCompanyJobs, setAllCompanyJobs] = useState([]);
 
   useEffect(() => {
-    axios.get("#").then((res) => {
+    axios.get("").then((res) => {
       console.log(res);
-      setAllJobPosts(res.data);
+      setAllCompanyJobs(res.data);
     });
   }, []);
 
@@ -18,7 +18,9 @@ const CompanyDashboard = () => {
       {/* nav bar */}
       <div>
         <h1>Company Name</h1>
-        <button>Logout</button>
+        <button>
+          <Link to={"/company/logout"}>Logout</Link>
+        </button>
       </div>
       {/* company profile card/on the left */}
       <div>
@@ -27,7 +29,9 @@ const CompanyDashboard = () => {
       </div>
       {/* show job postings */}
       <div>
-        <button>Post a New Job</button>
+        <button>
+          <Link to={"/jobs/new"}>Post a New Job</Link>
+        </button>
         <table>
           <thead>
             <tr>
