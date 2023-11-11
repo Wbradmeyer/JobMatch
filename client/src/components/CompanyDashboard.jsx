@@ -30,7 +30,7 @@ const CompanyDashboard = () => {
       {/* show job postings */}
       <div>
         <button>
-          <Link to={"/jobs/new"}>Post a New Job</Link>
+          <Link to={"/jobs/create"}>Post a New Job</Link>
         </button>
         <table>
           <thead>
@@ -40,7 +40,6 @@ const CompanyDashboard = () => {
               <th>Filled</th>
             </tr>
           </thead>
-          {/* map all job posts from this company into new row*/}
           <tbody>
             <tr>Backend Dev</tr>
             <tr>40</tr>

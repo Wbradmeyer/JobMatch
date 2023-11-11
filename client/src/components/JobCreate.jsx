@@ -5,14 +5,31 @@ import { useNavigate, Link } from "react-router-dom";
 const JobCreate = () => {
   const navigate = useNavigate();
   // const { allJobs, setAllJobs } = props;
+  const [checkedLanguages, setCheckedLanguages] = useState([]);
+  const [checkedFrameworks, setCheckedFrameworks] = useState([]);
   const [job, setJob] = useState({
     jobTitle: "",
     description: "",
+    languages: [],
+    frameworks: [],
+    companyId: "",
   });
   const [error, setError] = useState({});
 
   const handleVals = (e) => {
     setJob({ ...job, [e.target.name]: e.target.value });
+  };
+
+  const handleLanguagesCheckedBoxes = (e) => {
+    if (e.target.checked) {
+      setCheckedLanguages([...checkedLanguages, e.target.value]);
+    }
+  };
+
+  const handleFrameworksCheckedBoxes = (e) => {
+    if (e.target.checked) {
+      setCheckedFrameworks([...checkedFrameworks, e.target.value]);
+    }
   };
 
   const onSubmitHandler = (e) => {
@@ -57,25 +74,65 @@ const JobCreate = () => {
           />
           <div>
             <p>Select Languages Required</p>
-            <input type="checkbox" name="java" value={java} />
+            <input
+              type="checkbox"
+              name="java"
+              value="java"
+              onChange={handleLanguagesCheckedBoxes}
+            />
             <label>Java</label>
-            <input type="checkbox" name="javascript" value={javascript} />
-            <label>Java</label>
-            <input type="checkbox" name="python" value={python} />
-            <label>Java</label>
-            <input type="checkbox" name="typeScript" value={typeScript} />
-            <label>Java</label>
+            <input
+              type="checkbox"
+              name="javascript"
+              value="javascript"
+              onChange={handleLanguagesCheckedBoxes}
+            />
+            <label>JavaScript</label>
+            <input
+              type="checkbox"
+              name="python"
+              value="python"
+              onChange={handleLanguagesCheckedBoxes}
+            />
+            <label>Python</label>
+            <input
+              type="checkbox"
+              name="typeScript"
+              value="typeScript"
+              onChange={handleLanguagesCheckedBoxes}
+            />
+            <label>TypeScript</label>
           </div>
           <div>
             <p>Select Frameworks Required</p>
-            <input type="checkbox" name="flask" value={flask} />
-            <label>Java</label>
-            <input type="checkbox" name="django" value={django} />
-            <label>Java</label>
-            <input type="checkbox" name="springBoot" value={springBoot} />
-            <label>Java</label>
-            <input type="checkbox" name="react" value={react} />
-            <label>Java</label>
+            <input
+              type="checkbox"
+              name="flask"
+              value="flask"
+              onChange={handleFrameworksCheckedBoxes}
+            />
+            <label>Flask</label>
+            <input
+              type="checkbox"
+              name="django"
+              value="django"
+              onChange={handleFrameworksCheckedBoxes}
+            />
+            <label>Django</label>
+            <input
+              type="checkbox"
+              name="springBoot"
+              value="springBoot"
+              onChange={handleFrameworksCheckedBoxes}
+            />
+            <label>Spring Boot</label>
+            <input
+              type="checkbox"
+              name="react"
+              value="react"
+              onChange={handleFrameworksCheckedBoxes}
+            />
+            <label>React</label>
           </div>
           <button>Post This Job</button>
         </form>
