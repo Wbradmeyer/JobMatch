@@ -8,7 +8,7 @@ import CompanyDashboard from "./components/CompanyDashboard";
 function App() {
   return (
     <div>
-      <h1>Job Search</h1>
+      <h1>Job Match</h1>
       <Routes>
         <Route index element={<Home />} />
         <Route path="/seekerRegister" element={<SeekerRegister />} />
