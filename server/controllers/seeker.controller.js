@@ -74,6 +74,7 @@ module.exports = {
     //         }) 
     // },
     logoutSeeker: (req, res) => {
+        // Cookie is not clearing - don't know why
         res.clearCookie('userToken')
         res.sendStatus(200)
     },
