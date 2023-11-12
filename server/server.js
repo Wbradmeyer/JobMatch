@@ -9,7 +9,7 @@ require('../server/config/mongoose.config')
 
 app.use(express.json(), express.urlencoded({extended: true}));
 app.use(cookieParser())
-app.use(cors());
+app.use(cors({credentials:true, origin:'http://localhost:5173'}));
 
 const allSeekerRoutes = require('./routes/seeker.routes')
 allSeekerRoutes(app);
