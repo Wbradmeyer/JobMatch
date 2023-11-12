@@ -22,7 +22,7 @@ const SeekerLogIn = () => {
     e.preventDefault()
 
     axios
-      .post('', seekerUser, {withCredentials: true})
+      .post('http://localhost:8000/seeker/login', seekerUser, {withCredentials: true})
       .then((res) => {
         console.log(res.data)
         localStorage.setItem("currentUser", JSON.stringify(res.data))
@@ -41,12 +41,12 @@ const SeekerLogIn = () => {
         <div>
           <form onSubmit={handleSeekerLogIn}>
             <div>
-              <label htmlFor="seekerEmail">Email:</label>
-              <input type="text" id='seekerEmail' name='seekerEmail' onChange={handleSeekerChange}/>
+              <label htmlFor="email">Email:</label>
+              <input type="text" id='email' name='email' onChange={handleSeekerChange}/>
             </div>
             <div>
-              <label htmlFor="seekerPassword">Password:</label>
-              <input type="text" id='seekerPassword' name='seekerPassword' onChange={handleSeekerChange}/>
+              <label htmlFor="password">Password:</label>
+              <input type="text" id='password' name='password' onChange={handleSeekerChange}/>
             </div>
             <button>Log-In</button>
           </form>

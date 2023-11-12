@@ -55,7 +55,7 @@ module.exports = {
     createSeekers: (req, res) => {    
         //Seeker.create(req.body) //this can be tested from postman
         console.log("body", req.body.newSeeker)
-        Seeker.create(req.body.newSeeker) // this line can be used from UI
+        Seeker.create(req.body) // this line can be used from UI
             .then(newSeeker => {res.status(200).json(newSeeker)})
             .catch(err => {res.status(500).json(err), console.log(err)}) 
     },
@@ -65,7 +65,7 @@ module.exports = {
         Seeker.findOne({email: email})
             .then(seeker => {
                 if(seeker) {
-                    if(seeker.password === password) {
+                    if(seeker.password == password) {
                         res.json("success")
                     }else{
                         res.json("Password is incorrect")
