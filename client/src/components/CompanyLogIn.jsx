@@ -22,7 +22,7 @@ const CompanyLogIn = () => {
     e.preventDefault()
 
     axios
-      .post('', companyUser, {withCredentials: true})
+      .post("http://localhost:8000/company/login", companyUser, {withCredentials: true})
       .then((res) => {
         console.log(res.data)
         localStorage.setItem("currentUser", JSON.stringify(res.data))
@@ -41,12 +41,12 @@ const CompanyLogIn = () => {
       <div>
         <form onSubmit={handleCompanyLogIn}>
           <div>
-            <label htmlFor="companyEmail">Email:</label>
-            <input type="text" id='companyEmail' name='companyEmail' onChange={handleCompanyChange}/>
+            <label htmlFor="email">Email:</label>
+            <input type="text" id='email' name='email' onChange={handleCompanyChange}/>
           </div>
           <div>
-            <label htmlFor="companyPassword">Password:</label>
-            <input type="text" id='companyPassword' name='companyPassword' onChange={handleCompanyChange}/>
+            <label htmlFor="password">Password:</label>
+            <input type="text" id='password' name='password' onChange={handleCompanyChange}/>
           </div>
           <button>Log-In</button>
         </form>

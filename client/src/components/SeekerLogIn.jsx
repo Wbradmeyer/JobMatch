@@ -46,7 +46,7 @@ const SeekerLogIn = () => {
             </div>
             <div>
               <label htmlFor="password">Password:</label>
-              <input type="text" id='password' name='password' onChange={handleSeekerChange}/>
+              <input type="password" id='password' name='password' onChange={handleSeekerChange}/>
             </div>
             <button>Log-In</button>
           </form>
