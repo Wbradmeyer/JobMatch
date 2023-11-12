@@ -18,28 +18,60 @@ const SeekerRegister = () => {
     confirmPassword: '',
   })
 
+  // const handleLanguagesCheckedBoxes = (e) => {
+  //   // console.log("Hello")
+  //   if (e.target.checked) {
+  //     console.log(e.target.checked)
+  //     setCheckedLanguages([...checkedLanguages, e.target.value])
+  //     console.log(checkedLanguages)
+  //     setSeekerUser({
+  //       ...seekerUser,
+  //       languages: checkedLanguages
+  //     })
+  //   }
+  // }
+
   const handleLanguagesCheckedBoxes = (e) => {
-    // console.log("Hello")
     if (e.target.checked) {
-      console.log(e.target.checked)
-      setCheckedLanguages([...checkedLanguages, e.target.value])
-      console.log(checkedLanguages)
-      setSeekerUser({
-        ...seekerUser,
-        languages: checkedLanguages
-      })
+      setCheckedLanguages(prevLanguages => [...prevLanguages, e.target.value]);
+      setSeekerUser(prevUser => ({
+        ...prevUser,
+        languages: [...prevUser.languages, e.target.value]
+      }));
+    } else {
+      setCheckedLanguages(prevLanguages => prevLanguages.filter(lang => lang !== e.target.value));
+      setSeekerUser(prevUser => ({
+        ...prevUser,
+        languages: prevUser.languages.filter(lang => lang !== e.target.value)
+      }));
     }
-  }
+  };
+
+  // const handleFrameworksCheckedBoxes = (e) => {
+  //   if (e.target.checked) {
+  //     setCheckedFrameworks([...checkedFrameworks, e.target.value])
+  //     setSeekerUser({
+  //       ...seekerUser,
+  //       frameworks: checkedFrameworks
+  //     })
+  //   }
+  // }
 
   const handleFrameworksCheckedBoxes = (e) => {
     if (e.target.checked) {
-      setCheckedFrameworks([...checkedFrameworks, e.target.value])
-      setSeekerUser({
-        ...seekerUser,
-        frameworks: checkedFrameworks
-      })
+      setCheckedFrameworks(prevFrameworks => [...prevFrameworks, e.target.value]);
+      setSeekerUser(prevUser => ({
+        ...prevUser,
+        frameworks: [...prevUser.frameworks, e.target.value]
+      }));
+    } else {
+      setCheckedFrameworks(prevFrameworks => prevFrameworks.filter(framework => framework !== e.target.value));
+      setSeekerUser(prevUser => ({
+        ...prevUser,
+        frameworks: prevUser.frameworks.filter(framework => framework !== e.target.value)
+      }));
     }
-  }
+  };
 
 
   const handleRegisterChange = (e) => {
@@ -54,7 +86,7 @@ const SeekerRegister = () => {
     console.log(checkedLanguages)
     console.log(checkedFrameworks)
     console.log(seekerUser)
-    console.log(checkedLanguages.length)
+
 
 
     axios
