@@ -9,7 +9,7 @@ module.exports = {
 
     createJobs: (req, res) => {     
         console.log("body", req.body.newJob)
-        Job.create(req.body.newJob)
+        Job.create(req.body)
             .then(newJob => {res.status(200).json(newJob)})
             .catch(err => {res.status(500).json(err), console.log(err)}) 
     },
