@@ -39,7 +39,7 @@ const CompanyDashboard = () => {
     <div>
       {/* nav bar */}
       <div>
-        <h1>{currentUser.name}</h1>
+        <h1 className="underline-offset-1">{currentUser.name}</h1>
         <button onClick={logoutUser}>Logout</button>
       </div>
       {/* company profile card/on the left */}
