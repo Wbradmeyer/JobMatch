@@ -8,6 +8,7 @@ logs
 node_modules
 bower_components
 /server/config/mongoose.config.js
+/server/.env
 
 *.sublime*
 

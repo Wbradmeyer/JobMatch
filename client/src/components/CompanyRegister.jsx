@@ -71,6 +71,19 @@ const CompanyRegister = () => {
               onChange={handleRegisterChange}
             ></textarea>
           </div>
+          <div>
+            <label htmlFor="email">Email:</label>
+            <input type="text" id='email' name='email' onChange={handleRegisterChange} />
+          </div>
+          <div>
+            <label htmlFor="password">Password:</label>
+            <input type="password" id='password' name='password' onChange={handleRegisterChange} />
+          </div>
+          <div>
+            <label htmlFor="confirmPassword">Confirm Password:</label>
+            <input type="password" id='confirmPassword' name='confirmPassword' onChange={handleRegisterChange} />
+          </div>
+
           <button>Register</button>
         </form>
       </div>

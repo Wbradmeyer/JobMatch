@@ -5,6 +5,10 @@ export const userContext = createContext({
     _id: '',
     name: '',
     email: '',
+    location: '',
+    bio: '',
+    languages: [],
+    frameworks: []
   },
   setCurrentUser: () => {}
 })
@@ -14,6 +18,10 @@ export const UserContextProvider = (props) => {
     _id: '',
     name: '',
     email: '',
+    location: '',
+    bio: '',
+    languages: [],
+    frameworks: []
   });
 
   useEffect(() => {
