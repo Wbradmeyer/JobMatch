@@ -7,10 +7,13 @@ const CompanyDashboard = () => {
   const [allCompanyJobs, setAllCompanyJobs] = useState([]);
 
   useEffect(() => {
-    axios.get("").then((res) => {
-      console.log(res);
-      setAllCompanyJobs(res.data);
-    });
+    axios
+      .get("http://localhost:8000/jobs")
+      .then((res) => {
+        console.log(res);
+        setAllCompanyJobs(res.data);
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   return (
@@ -41,9 +44,13 @@ const CompanyDashboard = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>Backend Dev</tr>
-            <tr>40</tr>
-            <tr>check</tr>
+            {allCompanyJobs.map((thisJob) => (
+              <tr>
+                <td>{thisJob.jobTitle}</td>
+                <td>40</td>
+                <td>check</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
