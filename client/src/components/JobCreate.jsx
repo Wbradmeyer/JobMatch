@@ -20,6 +20,7 @@ const JobCreate = () => {
 
   const handleVals = (e) => {
     setJob({ ...job, [e.target.name]: e.target.value });
+    console.log(job);
   };
 
   const handleLanguagesCheckedBoxes = (e) => {
@@ -53,7 +54,7 @@ const JobCreate = () => {
   const onSubmitHandler = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:8000/api/jobs/new", job)
+      .post("http://localhost:8000/jobs/new", job)
       .then((res) => {
         console.log(res);
         console.log(res.data);

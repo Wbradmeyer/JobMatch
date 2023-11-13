@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { userContext } from "../context/UserContext";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 
 const CompanyDashboard = () => {
+  const { currentUser, setCurrentUser } = useContext(userContext);
   const navigate = useNavigate();
   const [allCompanyJobs, setAllCompanyJobs] = useState([]);
 
@@ -16,19 +18,34 @@ const CompanyDashboard = () => {
       .catch((err) => console.log(err));
   }, []);
 
+  const logoutUser = () => {
+    axios
+      .post(
+        "http://localhost:8000/company/logout",
+        {},
+        { withCredentials: true }
+      )
+      .then((res) => {
+        navigate("/");
+        // localStorage is not clearing - don't know why
+        localStorage.clear();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div>
       {/* nav bar */}
       <div>
-        <h1>Company Name</h1>
-        <button>
-          <Link to={"/company/logout"}>Logout</Link>
-        </button>
+        <h1>{currentUser.name}</h1>
+        <button onClick={logoutUser}>Logout</button>
       </div>
       {/* company profile card/on the left */}
       <div>
         <h2>logo</h2>
-        <p>Description</p>
+        <p>{currentUser.aboutUs}</p>
       </div>
       {/* show job postings */}
       <div>
