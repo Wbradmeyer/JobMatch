@@ -11,7 +11,7 @@ import JobView from "./components/JobView";
 function App() {
   return (
     <div>
-      <h1>Job Match</h1>
+      <h1 className="text-3xl font-bold underline">Job Match</h1>
       <Routes>
         <Route index element={<Home />} />
         <Route path="/seekerRegister" element={<SeekerRegister />} />
