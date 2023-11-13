@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
+import { userContext } from "../context/UserContext";
 
 const JobCreate = () => {
+  const { currentUser, setCurrentUser } = useContext(userContext);
   const navigate = useNavigate();
   // const { allJobs, setAllJobs } = props;
   const [checkedLanguages, setCheckedLanguages] = useState([]);
@@ -10,9 +12,9 @@ const JobCreate = () => {
   const [job, setJob] = useState({
     jobTitle: "",
     description: "",
-    languages: [],
-    frameworks: [],
-    companyId: "",
+    languages: checkedLanguages,
+    frameworks: checkedFrameworks,
+    companyId: currentUser._id,
   });
   const [error, setError] = useState({});
 
@@ -23,12 +25,28 @@ const JobCreate = () => {
   const handleLanguagesCheckedBoxes = (e) => {
     if (e.target.checked) {
       setCheckedLanguages([...checkedLanguages, e.target.value]);
+    } else {
+      setCheckedLanguages(
+        checkedLanguages.filter((lang) => lang !== e.target.value)
+      );
+      setJob(
+        job.languages,
+        languages.filter((lang) => lang !== e.target.value)
+      );
     }
   };
 
   const handleFrameworksCheckedBoxes = (e) => {
     if (e.target.checked) {
       setCheckedFrameworks([...checkedFrameworks, e.target.value]);
+    } else {
+      setCheckedFrameworks(
+        checkedFrameworks.filter((frame) => frame !== e.target.value)
+      );
+      setJob(
+        job.frameworks,
+        frameworks.filter((frame) => frame !== e.target.value)
+      );
     }
   };
 
