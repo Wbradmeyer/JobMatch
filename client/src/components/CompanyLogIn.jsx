@@ -46,7 +46,7 @@ const CompanyLogIn = () => {
           </div>
           <div>
             <label htmlFor="password">Password:</label>
-            <input type="text" id='password' name='password' onChange={handleCompanyChange}/>
+            <input type="password" id='password' name='password' onChange={handleCompanyChange}/>
           </div>
           <button>Log-In</button>
         </form>
