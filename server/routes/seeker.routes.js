@@ -5,4 +5,7 @@ module.exports = (app) => {
     app.post('/seeker/register', SeekerController.createSeekers);
     app.post('/seeker/login', SeekerController.loginSeeker);
     app.post('/seeker/logout', SeekerController.logoutSeeker)
+
+    app.patch('/seekers/:id', SeekerController.updateOneSeeker);
+    app.delete('/seekers/:id', SeekerController.deleteOneSeeker);
 }
