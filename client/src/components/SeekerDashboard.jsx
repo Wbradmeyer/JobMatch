@@ -71,34 +71,48 @@ const SeekerDashboard = () => {
   // }
 
   return (
-    <div>
-      <Link to={"/"} onClick={logoutUser}>
-        Logout
-      </Link>
-      <h2>{currentUser.name}'s Dashboard</h2>
-      <div>
+    <div className="ml-10">
+      <div className="flex justify-end w-3/4 mx-auto">
+        <Link
+          to={"/"}
+          onClick={logoutUser}
+          className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+        >
+          Logout
+        </Link>
+      </div>
+      <div className="flex justify-around w-3/4 mx-auto my-10">
         <div>
-          <p>Skills/Experience:</p>
-          {currentUser.languages.map((language, index) => {
-            return <p key={index}>{language}</p>;
-          })}
-          {currentUser.frameworks.map((framework, index) => {
-            return <p key={index}>{framework}</p>;
-          })}
+          <h2 className="text-4xl font-bold">{currentUser.name}</h2>
+          <div>
+            <p className="text-xl font-medium">Bio:</p>
+            <p>{currentUser.bio}</p>
+          </div>
         </div>
         <div>
-          <p>Bio:</p>
-          <p>{currentUser.bio}</p>
+          <p className="text-xl font-medium">Skills/Experience:</p>
+          <div className="flex justify-evenly">
+            <div>
+              {currentUser.languages.map((language, index) => {
+                return <p key={index}>{language}</p>;
+              })}
+            </div>
+            <div>
+              {currentUser.frameworks.map((framework, index) => {
+                return <p key={index}>{framework}</p>;
+              })}
+            </div>
+          </div>
         </div>
       </div>
-      <div>
+      <div className="relative overflow-x-auto flex justify-center">
         {/* Add filter button for interested jobs here */}
-        <table>
-          <thead>
+        <table className="w-3/4 text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-              <th>Jobs Available</th>
-              <th>Company</th>
-              <th>Interested</th>
+              <th className="px-6 py-3">Jobs Available</th>
+              <th className="px-6 py-3">Company</th>
+              <th className="px-6 py-3">Interested</th>
             </tr>
           </thead>
           <tbody>
@@ -107,13 +121,24 @@ const SeekerDashboard = () => {
                 (company) => company._id == job.companyId
               );
               return (
-                <tr key={index}>
+                <tr
+                  key={index}
+                  className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                >
                   {/* Display each job */}
-                  {<Link to={`/jobs/display/${job._id}`}>{job.jobTitle}</Link>}
+                  <th className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {
+                      <Link to={`/jobs/display/${job._id}`}>
+                        {job.jobTitle}
+                      </Link>
+                    }
+                  </th>
                   {/* <td>{job.jobTitle}</td> */}
                   {/* For Company: If job.company._id == company._id display company.name */}
-                  <td>{associatedCompany ? associatedCompany.name : "N/A"}</td>
-                  <td>
+                  <td className="px-6 py-4">
+                    {associatedCompany ? associatedCompany.name : "N/A"}
+                  </td>
+                  <td className="px-6 py-4">
                     <input type="checkbox" name="interested" id="interested" />
                   </td>
                 </tr>
