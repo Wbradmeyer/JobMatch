@@ -78,4 +78,16 @@ module.exports = {
         res.clearCookie('userToken')
         res.sendStatus(200)
     },
+    updateOneSeeker: (req, res) => {
+        console.log("Updating Seeker", req.body)
+        Seeker.findOneAndUpdate({_id: req.params.id}, req.body, {new: true, runValidators:true})
+            .then(updateOne => res.status(200).json(updateOne))
+            .catch(err => { res.status(500).json(err), console.log(err)} )
+    },
+    deleteOneSeeker: (req, res) => {
+        console.log("Deleting seeker", req.params.id)
+        Seeker.deleteOne({_id: req.params.id})
+            .then(deleteOne => res.json(deleteOne))
+            .catch(err => console.log(err))
+    }
 }

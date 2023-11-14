@@ -63,4 +63,16 @@ module.exports = {
         res.clearCookie('companyToken')
         res.sendStatus(200)
     },
+    updateOneCompany: (req, res) => {
+        console.log("Updating Company", req.body)
+        Company.findOneAndUpdate({_id: req.params.id}, req.body, {new: true, runValidators:true})
+            .then(updateOne => res.status(200).json(updateOne))
+            .catch(err => { res.status(500).json(err), console.log(err)} )
+    },
+    deleteOneCompany: (req, res) => {
+        console.log("Deleting Company", req.params.id)
+        Company.deleteOne({_id: req.params.id})
+            .then(deleteOne => res.json(deleteOne))
+            .catch(err => console.log(err))
+    }
 }

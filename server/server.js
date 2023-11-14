@@ -21,5 +21,5 @@ const allCompanyRoutes = require('./routes/company.routes')
 allCompanyRoutes(app);
 
 app.listen(8000, () => {
-    console.log("server is started at 4500")
+    console.log("server is started at 8000")
 })
