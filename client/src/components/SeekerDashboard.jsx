@@ -8,6 +8,7 @@ const SeekerDashboard = () => {
   const [allJobs, setAllJobs] = useState([]);
   const [allCompanies, setAllCompanies] = useState([]);
   const navigate = useNavigate();
+  const [interestedJobs, setInterestedJobs] = useState([])
   const [filteredJobs, setFilteredJobs] = useState([]);
   // const { id } = useParams()
 
@@ -66,6 +67,8 @@ const SeekerDashboard = () => {
   //   }
   // }, []);
 
+
+
   // const handleInterestedJobsButton = (e) => {
 
   // }
@@ -83,7 +86,7 @@ const SeekerDashboard = () => {
       </div>
       <div className="flex justify-around w-3/4 mx-auto my-10">
         <div>
-          <h2 className="text-4xl font-bold">{currentUser.name}</h2>
+          <h2 className="text-4xl font-bold sub">{currentUser.name}</h2>
           <div>
             <p className="text-xl font-medium">Bio:</p>
             <p>{currentUser.bio}</p>

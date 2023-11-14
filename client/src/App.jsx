@@ -8,11 +8,13 @@ import JobCreate from "./components/JobCreate";
 import SeekerDashboard from "./components/SeekerDashboard";
 import JobView from "./components/JobView";
 import JobUpdate from "./components/JobUpdate";
+import Logo from "./assets/jobMatchLogo.png"
 
 function App() {
   return (
     <div>
-      <h1 className="text-3xl font-bold underline">Job Match</h1>
+      {/* <h1 className="text-3xl font-bold underline">Job Match</h1> */}
+      <img src={Logo} alt="Job Match Logo" className="w-1/4 mt-20 ml-20"/>
       <Routes>
         <Route index element={<Home />} />
         <Route path="/seekerRegister" element={<SeekerRegister />} />
