@@ -1,13 +1,12 @@
-import React, { useState, useContext } from "react";
+import { React, useEffect, useState, useContext } from "react";
+import { useNavigate, Link, useParams } from "react-router-dom";
 import axios from "axios";
-import { useNavigate, Link } from "react-router-dom";
 import { userContext } from "../context/UserContext";
 
-const JobCreate = () => {
+const JobUpdate = () => {
   const { currentUser, setCurrentUser } = useContext(userContext);
   const navigate = useNavigate();
-  const [checkedLanguages, setCheckedLanguages] = useState([]);
-  const [checkedFrameworks, setCheckedFrameworks] = useState([]);
+  const { id } = useParams();
   const [job, setJob] = useState({
     jobTitle: "",
     description: "",
@@ -16,6 +15,16 @@ const JobCreate = () => {
     companyId: currentUser._id,
   });
   const [error, setError] = useState({});
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/jobs/${id}`)
+      .then((res) => {
+        console.log(res);
+        setJob(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   const handleVals = (e) => {
     setJob({ ...job, [e.target.name]: e.target.value });
@@ -69,7 +78,7 @@ const JobCreate = () => {
   const onSubmitHandler = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:8000/jobs/new", job)
+      .patch(`http://localhost:8000/jobs/${id}`, job)
       .then((res) => {
         console.log(res);
         console.log(res.data);
@@ -83,9 +92,8 @@ const JobCreate = () => {
 
   return (
     <div>
-      {/* nav-bar */}
       <div>
-        <h1>Post a New Job</h1>
+        <h1>Edit This Job</h1>
         <p>
           <Link to={"/company/dashboard"}>back to dashboard</Link>
         </p>
@@ -94,7 +102,12 @@ const JobCreate = () => {
         <form onSubmit={onSubmitHandler}>
           <label>Job Title</label>
           {error.jobTitle ? <p>{error.jobTitle.message}</p> : null}
-          <input type="text" name="jobTitle" onChange={handleVals} />
+          <input
+            type="text"
+            name="jobTitle"
+            value={job.jobTitle}
+            onChange={handleVals}
+          />
 
           <label>Description</label>
           {error.description ? <p>{error.description.message}</p> : null}
@@ -103,8 +116,10 @@ const JobCreate = () => {
             name="description"
             cols="30"
             rows="10"
+            value={job.description}
             onChange={handleVals}
           />
+          {/* if lang and frame in job, make checked to start */}
           <div>
             <p>Select Languages Required</p>
             <input
@@ -168,11 +183,11 @@ const JobCreate = () => {
             <label>React</label>
           </div>
           <input type="hidden" name="companyId" value={currentUser._id} />
-          <button>Post This Job</button>
+          <button>Update This Job</button>
         </form>
       </div>
     </div>
   );
 };
 
-export default JobCreate;
+export default JobUpdate;

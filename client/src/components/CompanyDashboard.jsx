@@ -12,11 +12,14 @@ const CompanyDashboard = () => {
     axios
       .get("http://localhost:8000/jobs")
       .then((res) => {
-        console.log(res);
-        setAllCompanyJobs(res.data);
+        // console.log(res);
+        setAllCompanyJobs(
+          // res.data
+          res.data.filter((job) => job.companyId == currentUser._id)
+        );
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [allCompanyJobs]);
 
   const logoutUser = () => {
     axios
@@ -27,8 +30,7 @@ const CompanyDashboard = () => {
       )
       .then((res) => {
         navigate("/");
-        // localStorage is not clearing - don't know why
-        localStorage.clear();
+        localStorage.clear("currentUser");
       })
       .catch((err) => {
         console.log(err);
@@ -39,7 +41,7 @@ const CompanyDashboard = () => {
     <div>
       {/* nav bar */}
       <div>
-        <h1 className="underline-offset-1">{currentUser.name}</h1>
+        <h1>{currentUser.name}</h1>
         <button onClick={logoutUser}>Logout</button>
       </div>
       {/* company profile card/on the left */}
@@ -62,8 +64,12 @@ const CompanyDashboard = () => {
           </thead>
           <tbody>
             {allCompanyJobs.map((thisJob) => (
-              <tr>
-                <td>{thisJob.jobTitle}</td>
+              <tr key={thisJob._id}>
+                <td>
+                  <Link to={`/jobs/display/${thisJob._id}`}>
+                    {thisJob.jobTitle}
+                  </Link>
+                </td>
                 <td>40</td>
                 <td>check</td>
               </tr>

@@ -7,6 +7,7 @@ import CompanyDashboard from "./components/CompanyDashboard";
 import JobCreate from "./components/JobCreate";
 import SeekerDashboard from "./components/SeekerDashboard";
 import JobView from "./components/JobView";
+import JobUpdate from "./components/JobUpdate";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/seeker/dashboard" element={<SeekerDashboard />} />
         <Route path="/jobs/create" element={<JobCreate />} />
         <Route path="/jobs/display/:id" element={<JobView />} />
+        <Route path="/jobs/update/:id" element={<JobUpdate />} />
       </Routes>
     </div>
   );
