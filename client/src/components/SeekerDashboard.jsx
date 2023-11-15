@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 const SeekerDashboard = () => {
+  console.log("Test")
   const { currentUser, setCurrentUser } = useContext(userContext);
   const [allJobs, setAllJobs] = useState([]);
   const [allCompanies, setAllCompanies] = useState([]);
