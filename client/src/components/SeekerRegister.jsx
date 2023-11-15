@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 
 const SeekerRegister = () => {
   const navigate = useNavigate()
+  const [error, setError] = useState({})
   const [checkedLanguages, setCheckedLanguages] = useState([])
   const [checkedFrameworks, setCheckedFrameworks] = useState([])
   const [seekerUser, setSeekerUser] = useState({
@@ -99,6 +100,7 @@ const SeekerRegister = () => {
       .catch((err) => {
         console.log(err)
         // Set errors for Validations here
+        setError(err.response.data.error.errors)
       })
   }
 
@@ -110,14 +112,23 @@ const SeekerRegister = () => {
           <div>
             <label htmlFor="name">Name:</label>
             <input type="text" name='name' id='name' onChange={handleRegisterChange} />
+            {
+              error.name ? <p className='text-red-600'>{error.name.message}</p> : null
+            }
           </div>
           <div>
             <label htmlFor="location">Location:</label>
             <input type="text" name='location' id='location' onChange={handleRegisterChange}/>
+            {
+              error.location ? <p className='text-red-600'>{error.location.message}</p> : null
+            }
           </div>
           <div>
             <label htmlFor="bio">Bio:</label>
             <textarea name="bio" id="bio" cols="30" rows="10" onChange={handleRegisterChange}></textarea>
+            {
+              error.bio ? <p className='text-red-600'>{error.bio.message}</p> : null
+            }
           </div>
           <div>
             <p>Languages</p>
@@ -160,14 +171,23 @@ const SeekerRegister = () => {
           <div>
             <label htmlFor="email">Email:</label>
             <input type="text" id='email' name='email' onChange={handleRegisterChange} />
+            {
+              error.email ? <p className='text-red-600'>{error.email.message}</p> : null
+            }
           </div>
           <div>
             <label htmlFor="password">Password:</label>
             <input type="password" id='password' name='password' onChange={handleRegisterChange} />
+            {
+              error.password ? <p className='text-red-600'>{error.password.message}</p> : null
+            }
           </div>
           <div>
             <label htmlFor="confirmPassword">Confirm Password:</label>
             <input type="password" id='confirmPassword' name='confirmPassword' onChange={handleRegisterChange} />
+            {
+              error.confirmPassword ? <p className='text-red-600'>{error.confirmPassword.message}</p> : null
+            }
           </div>
           <button>Register</button>
         </form>
