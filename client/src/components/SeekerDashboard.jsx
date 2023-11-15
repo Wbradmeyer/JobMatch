@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 const SeekerDashboard = () => {
+  console.log("Test")
   const { currentUser, setCurrentUser } = useContext(userContext);
   const [allJobs, setAllJobs] = useState([]);
   const [allCompanies, setAllCompanies] = useState([]);
@@ -99,7 +100,7 @@ const SeekerDashboard = () => {
         <Link
           to={"/"}
           onClick={logoutUser}
-          className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+          className="font-medium text-xl text-blue-600 dark:text-blue-500 hover:underline"
         >
           Logout
         </Link>
