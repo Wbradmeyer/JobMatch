@@ -1,8 +1,11 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { userContext } from "../context/UserContext";
+
 
 const CompanyRegister = () => {
+  const {setCurrentUser} = useContext(userContext)
   const navigate = useNavigate();
   const [error, setError] = useState({})
   const [companyUser, setCompanyUser] = useState({
@@ -31,6 +34,7 @@ const CompanyRegister = () => {
       .then((res) => {
         console.log(res.data);
         localStorage.setItem("currentUser", JSON.stringify(res.data));
+        setCurrentUser(res.data)
         navigate("/company/dashboard");
       })
       .catch((err) => {

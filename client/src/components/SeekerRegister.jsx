@@ -1,9 +1,11 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { userContext } from "../context/UserContext";
 
 
 const SeekerRegister = () => {
+  const {setCurrentUser} = useContext(userContext)
   const navigate = useNavigate()
   const [error, setError] = useState({})
   const [checkedLanguages, setCheckedLanguages] = useState([])
@@ -84,17 +86,13 @@ const SeekerRegister = () => {
 
   const handleRegisterSubmit = (e) => {
     e.preventDefault()
-    console.log(checkedLanguages)
-    console.log(checkedFrameworks)
-    console.log(seekerUser)
-
-
 
     axios
       .post('http://localhost:8000/seeker/register', seekerUser, {withCredentials: true})
       .then((res) => {
         console.log(res.data)
         localStorage.setItem('currentUser', JSON.stringify(res.data))
+        setCurrentUser(res.data)
         navigate('/seeker/dashboard')
       })
       .catch((err) => {

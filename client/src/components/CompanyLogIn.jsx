@@ -1,11 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import axios from 'axios'
 import { useNavigate, Link } from 'react-router-dom'
+import { userContext } from "../context/UserContext";
+
 
 
 
 
 const CompanyLogIn = () => {
+  const {setCurrentUser} = useContext(userContext)
   const navigate = useNavigate()
   const [companyUser, setCompanyUser] = useState({
     email: '',
@@ -27,6 +30,7 @@ const CompanyLogIn = () => {
       .then((res) => {
         console.log(res.data)
         localStorage.setItem("currentUser", JSON.stringify(res.data))
+        setCurrentUser(res.data)
         navigate('/company/dashboard')
       })
       .catch((err) => {
