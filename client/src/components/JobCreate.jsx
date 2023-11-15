@@ -82,31 +82,25 @@ const JobCreate = () => {
   };
 
   return (
-    <div>
-      {/* nav-bar */}
-      <div>
-        <h1>Post a New Job</h1>
-        <p>
-          <Link to={"/company/dashboard"}>back to dashboard</Link>
-        </p>
+    <div className="ml-10">
+      {/* nav-bar */}      
+        <h1 className="mb-2 mt-0 text-5xl font-medium leading-tight">Post a New Job</h1>
+        <div className="flex justify-end w-3/4 mx-auto">
+        <p className="text-sm font-medium  text-gray-900">
+          <Link to={"/company/dashboard"}   className="inline-block rounded-full border-2 border-neutral-800 px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-neutral-800 transition duration-150 ease-in-out hover:border-neutral-800 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-800 focus:border-neutral-800 focus:text-neutral-800 focus:outline-none focus:ring-0 active:border-neutral-900 active:text-neutral-900 dark:border-neutral-900 dark:text-neutral-900 dark:hover:border-neutral-900 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10 dark:hover:text-neutral-900 dark:focus:border-neutral-900 dark:focus:text-neutral-900 dark:active:border-neutral-900 dark:active:text-neutral-900">
+            back to dashboard
+          </Link>
+        </p>&nbsp;&nbsp;
       </div>
-      <div>
+      <div >
         <form onSubmit={onSubmitHandler}>
-          <label>Job Title</label>
+          <label
+          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          ><p className="text-xl font-medium">Job Title</p> </label>
           {error.jobTitle ? <p>{error.jobTitle.message}</p> : null}
-          <input type="text" name="jobTitle" onChange={handleVals} />
-
-          <label>Description</label>
-          {error.description ? <p>{error.description.message}</p> : null}
-          <textarea
-            type="text"
-            name="description"
-            cols="30"
-            rows="10"
-            onChange={handleVals}
-          />
-          <div>
-            <p>Select Languages Required</p>
+          <input type="text" className="border border-black text-sm rounded-lg  focus:border-blue-500 block w-full w-auto p-2.5" name="jobTitle" onChange={handleVals} />
+          <div className="flex gap-4 mt-10">
+            <p className="text-xl font-medium">Select Languages Required</p>
             <input
               type="checkbox"
               name="java"
@@ -136,8 +130,8 @@ const JobCreate = () => {
             />
             <label>TypeScript</label>
           </div>
-          <div>
-            <p>Select Frameworks Required</p>
+          <div className="flex gap-4 mt-10">
+            <p className="text-xl font-medium">Select Frameworks Required</p>
             <input
               type="checkbox"
               name="flask"
@@ -165,10 +159,27 @@ const JobCreate = () => {
               value="react"
               onChange={handleFrameworksCheckedBoxes}
             />
-            <label>React</label>
+            <label>React</label>&nbsp;&nbsp;
           </div>
-          <input type="hidden" name="companyId" value={currentUser._id} />
-          <button>Post This Job</button>
+          
+          <div className="flex gap-4 mt-10">
+            <label
+            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> <p className="text-xl font-medium">Description </p></label>
+            {error.description ? <p>{error.description.message}</p> : null}
+            <textarea
+              type="text"
+              name="description"
+              cols="65"
+              rows="5"
+              className="border border-black text-sm rounded-lg  focus:border-blue-500 block w-full w-auto p-2.5"
+              onChange={handleVals}
+            />
+
+            <input type="hidden" name="companyId" value={currentUser._id} />
+            <button type="button"
+                    className="rounded bg-neutral-800 px-6 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-50 shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] transition duration-150 ease-in-out hover:bg-neutral-800 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:bg-neutral-800 focus:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:outline-none focus:ring-0 active:bg-neutral-900 active:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] dark:bg-neutral-900 dark:shadow-[0_4px_9px_-4px_#030202] dark:hover:bg-neutral-900 dark:hover:shadow-[0_8px_9px_-4px_rgba(3,2,2,0.3),0_4px_18px_0_rgba(3,2,2,0.2)] dark:focus:bg-neutral-900 dark:focus:shadow-[0_8px_9px_-4px_rgba(3,2,2,0.3),0_4px_18px_0_rgba(3,2,2,0.2)] dark:active:bg-neutral-900 dark:active:shadow-[0_8px_9px_-4px_rgba(3,2,2,0.3),0_4px_18px_0_rgba(3,2,2,0.2)]"                    
+            >Post This Job</button>
+          </div>
         </form>
       </div>
     </div>
