@@ -12,6 +12,7 @@ const SeekerDashboard = () => {
   );
   const navigate = useNavigate();
   const [matches, setMatches] = useState([]);
+  console.log(currentUser)
   // const [interestedJobs, setInterestedJobs] = useState([]);
   // const [filteredJobs, setFilteredJobs] = useState([]);
   // const { id } = useParams()
