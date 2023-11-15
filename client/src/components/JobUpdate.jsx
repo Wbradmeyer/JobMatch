@@ -7,6 +7,8 @@ const JobUpdate = () => {
   const { currentUser, setCurrentUser } = useContext(userContext);
   const navigate = useNavigate();
   const { id } = useParams();
+  const [checkedLanguages, setCheckedLanguages] = useState([]);
+  const [checkedFrameworks, setCheckedFrameworks] = useState([]);
   const [job, setJob] = useState({
     jobTitle: "",
     description: "",
@@ -127,6 +129,7 @@ const JobUpdate = () => {
               name="java"
               value="java"
               onChange={handleLanguagesCheckedBoxes}
+              checked={job.languages.includes("java")}
             />
             <label>Java</label>
             <input
@@ -134,6 +137,7 @@ const JobUpdate = () => {
               name="javascript"
               value="javascript"
               onChange={handleLanguagesCheckedBoxes}
+              checked={job.languages.includes("javascript")}
             />
             <label>JavaScript</label>
             <input
@@ -141,6 +145,7 @@ const JobUpdate = () => {
               name="python"
               value="python"
               onChange={handleLanguagesCheckedBoxes}
+              checked={job.languages.includes("python")}
             />
             <label>Python</label>
             <input
@@ -148,6 +153,7 @@ const JobUpdate = () => {
               name="typeScript"
               value="typeScript"
               onChange={handleLanguagesCheckedBoxes}
+              checked={job.languages.includes("typeScript")}
             />
             <label>TypeScript</label>
           </div>
@@ -158,6 +164,7 @@ const JobUpdate = () => {
               name="flask"
               value="flask"
               onChange={handleFrameworksCheckedBoxes}
+              checked={job.frameworks.includes("flask")}
             />
             <label>Flask</label>
             <input
@@ -165,6 +172,7 @@ const JobUpdate = () => {
               name="django"
               value="django"
               onChange={handleFrameworksCheckedBoxes}
+              checked={job.frameworks.includes("django")}
             />
             <label>Django</label>
             <input
@@ -172,6 +180,7 @@ const JobUpdate = () => {
               name="springBoot"
               value="springBoot"
               onChange={handleFrameworksCheckedBoxes}
+              checked={job.frameworks.includes("springBoot")}
             />
             <label>Spring Boot</label>
             <input
@@ -179,6 +188,7 @@ const JobUpdate = () => {
               name="react"
               value="react"
               onChange={handleFrameworksCheckedBoxes}
+              checked={job.frameworks.includes("react")}
             />
             <label>React</label>
           </div>
