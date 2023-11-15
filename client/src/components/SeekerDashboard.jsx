@@ -8,8 +8,12 @@ const SeekerDashboard = () => {
   const [allJobs, setAllJobs] = useState([]);
   const [allCompanies, setAllCompanies] = useState([]);
   const navigate = useNavigate();
-  const [interestedJobs, setInterestedJobs] = useState([])
-  const [filteredJobs, setFilteredJobs] = useState([]);
+  const combinedUserSkills = currentUser.languages.concat(
+    currentUser.frameworks
+  );
+  const [matches, setMatches] = useState([]);
+  // const [interestedJobs, setInterestedJobs] = useState([]);
+  // const [filteredJobs, setFilteredJobs] = useState([]);
   // const { id } = useParams()
 
   // Create a logout component to import all needed pages
@@ -36,6 +40,21 @@ const SeekerDashboard = () => {
       .then((res) => {
         console.log(res.data);
         setAllJobs(res.data);
+
+        let percents = [];
+        for (let i = 0; i < res.data.length; i++) {
+          const combinedJobSkills = res.data[i].languages.concat(
+            res.data[i].frameworks
+          );
+          let count = 0;
+          for (let j = 0; j < combinedJobSkills.length; j++) {
+            if (combinedUserSkills.includes(combinedUserSkills[j])) {
+              count++;
+            }
+          }
+          percents.push(`${Math.ceil((count / 8) * 100)}%`);
+        }
+        setMatches(percents);
       })
       .catch((err) => {
         console.log(err);
@@ -66,8 +85,6 @@ const SeekerDashboard = () => {
   //     setFilteredJobs(filtered);
   //   }
   // }, []);
-
-
 
   // const handleInterestedJobsButton = (e) => {
 
@@ -101,12 +118,20 @@ const SeekerDashboard = () => {
           <div className="flex justify-evenly">
             <div>
               {currentUser.languages.map((language, index) => {
-                return <p className="mt-5" key={index}>{language}</p>;
+                return (
+                  <p className="mt-5" key={index}>
+                    {language}
+                  </p>
+                );
               })}
             </div>
             <div>
               {currentUser.frameworks.map((framework, index) => {
-                return <p className="mt-5" key={index}>{framework}</p>;
+                return (
+                  <p className="mt-5" key={index}>
+                    {framework}
+                  </p>
+                );
               })}
             </div>
           </div>
@@ -119,7 +144,7 @@ const SeekerDashboard = () => {
             <tr>
               <th className="px-6 py-3">Jobs Available</th>
               <th className="px-6 py-3">Company</th>
-              <th className="px-6 py-3">Interested</th>
+              <th className="px-6 py-3">Percent Match</th>
             </tr>
           </thead>
           <tbody>
@@ -146,7 +171,8 @@ const SeekerDashboard = () => {
                     {associatedCompany ? associatedCompany.name : "N/A"}
                   </td>
                   <td className="px-6 py-4">
-                    <input type="checkbox" name="interested" id="interested" />
+                    {matches[index]}
+                    {/* <input type="checkbox" name="interested" id="interested" /> */}
                   </td>
                 </tr>
               );
