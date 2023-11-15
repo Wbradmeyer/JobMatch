@@ -53,7 +53,7 @@ const SeekerDashboard = () => {
             }
           }
           percents.push(
-            `${Math.ceil((count / combinedUserSkills.length) * 100)}%`
+            `${Math.ceil((count / combinedJobSkills.length) * 100)}%`
           );
         }
         setMatches(percents);
@@ -61,7 +61,7 @@ const SeekerDashboard = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [combinedUserSkills]);
 
   // useEffect with axios call to get all companies: setCompanies
   useEffect(() => {

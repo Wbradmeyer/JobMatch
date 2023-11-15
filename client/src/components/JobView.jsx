@@ -38,8 +38,8 @@ const JobView = () => {
             res.data[i].frameworks
           );
           let count = 0;
-          for (let j = 0; j < combinedUserSkills.length; j++) {
-            if (combinedJobSkills.includes(combinedUserSkills[j])) {
+          for (let j = 0; j < combinedJobSkills.length; j++) {
+            if (combinedUserSkills.includes(combinedJobSkills[j])) {
               count++;
             }
           }
@@ -77,39 +77,41 @@ const JobView = () => {
         <p>Frameworks Required</p>
         {thisJob.frameworks && thisJob.frameworks.join(", ")}
       </div>
-      <h3>Available Talent</h3>
-      <div className="relative overflow-x-auto flex justify-center">
-        <table className="w-1/2 text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-              <th className="px-6 py-3">Name</th>
-              <th className="px-6 py-3">Percent Match</th>
-            </tr>
-          </thead>
-          <tbody>
-            {allSeekers.map((seeker, index) => (
-              <tr
-                key={index}
-                className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
-              >
-                <td className="px-6 py-4">{seeker.name}</td>
-                <td className="px-6 py-4">{matches[index]}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
       {thisJob.companyId == currentUser._id ? (
-        <div className="flex justify-around w-1/2 mx-auto">
-          <button>
-            <Link to={`/jobs/update/${id}`}>Edit Job Post</Link>
-          </button>
-          <button onClick={(e) => handleDelete(e, thisJob._id)}>
-            Delete Job
-          </button>
-          <button>
-            <Link to={"/company/dashboard"}>Back to Dashboard</Link>
-          </button>
+        <div>
+          <h3>Available Talent</h3>
+          <div className="relative overflow-x-auto flex justify-center">
+            <table className="w-1/2 text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+              <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                  <th className="px-6 py-3">Name</th>
+                  <th className="px-6 py-3">Percent Match</th>
+                </tr>
+              </thead>
+              <tbody>
+                {allSeekers.map((seeker, index) => (
+                  <tr
+                    key={index}
+                    className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                  >
+                    <td className="px-6 py-4">{seeker.name}</td>
+                    <td className="px-6 py-4">{matches[index]}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="flex justify-around w-1/2 mx-auto">
+            <button>
+              <Link to={`/jobs/update/${id}`}>Edit Job Post</Link>
+            </button>
+            <button onClick={(e) => handleDelete(e, thisJob._id)}>
+              Delete Job
+            </button>
+            <button>
+              <Link to={"/company/dashboard"}>Back to Dashboard</Link>
+            </button>
+          </div>
         </div>
       ) : (
         <button>
