@@ -91,18 +91,22 @@ const SeekerDashboard = () => {
             <p className="text-xl font-medium">Bio:</p>
             <p>{currentUser.bio}</p>
           </div>
+          <div>
+            <p className="text-xl font-medium">Location:</p>
+            <p>{currentUser.location}</p>
+          </div>
         </div>
         <div>
           <p className="text-xl font-medium">Skills/Experience:</p>
           <div className="flex justify-evenly">
             <div>
               {currentUser.languages.map((language, index) => {
-                return <p key={index}>{language}</p>;
+                return <p className="mt-5" key={index}>{language}</p>;
               })}
             </div>
             <div>
               {currentUser.frameworks.map((framework, index) => {
-                return <p key={index}>{framework}</p>;
+                return <p className="mt-5" key={index}>{framework}</p>;
               })}
             </div>
           </div>
