@@ -7,10 +7,10 @@ const SeekerDashboard = () => {
   const { currentUser, setCurrentUser } = useContext(userContext);
   const [allJobs, setAllJobs] = useState([]);
   const [allCompanies, setAllCompanies] = useState([]);
-  const navigate = useNavigate();
-  const combinedUserSkills = currentUser.languages.concat(
-    currentUser.frameworks
+  const combinedUserSkills = (currentUser.languages || []).concat(
+    currentUser.frameworks || []
   );
+  const navigate = useNavigate();
   const [matches, setMatches] = useState([]);
   // const [interestedJobs, setInterestedJobs] = useState([]);
   // const [filteredJobs, setFilteredJobs] = useState([]);
@@ -48,11 +48,13 @@ const SeekerDashboard = () => {
           );
           let count = 0;
           for (let j = 0; j < combinedJobSkills.length; j++) {
-            if (combinedUserSkills.includes(combinedUserSkills[j])) {
+            if (combinedUserSkills.includes(combinedJobSkills[j])) {
               count++;
             }
           }
-          percents.push(`${Math.ceil((count / 8) * 100)}%`);
+          percents.push(
+            `${Math.ceil((count / combinedUserSkills.length) * 100)}%`
+          );
         }
         setMatches(percents);
       })
