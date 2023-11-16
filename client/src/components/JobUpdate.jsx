@@ -94,15 +94,24 @@ const JobUpdate = () => {
 
   return (
     <div className="ml-10">
-      <h1 className="mb-2 mt-0 text-5xl font-medium leading-tight">Edit This Job</h1>
+      <h1 className="mb-2 mt-0 text-5xl font-medium leading-tight">
+        Edit This Job
+      </h1>
       <div className="flex justify-end w-3/4 mx-auto">
         <p className="text-sm font-medium  text-gray-900">
-          <Link to={"/company/dashboard"} className="inline-block rounded-full border-2 border-neutral-800 px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-neutral-800 transition duration-150 ease-in-out hover:border-neutral-800 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-800 focus:border-neutral-800 focus:text-neutral-800 focus:outline-none focus:ring-0 active:border-neutral-900 active:text-neutral-900 dark:border-neutral-900 dark:text-neutral-900 dark:hover:border-neutral-900 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10 dark:hover:text-neutral-900 dark:focus:border-neutral-900 dark:focus:text-neutral-900 dark:active:border-neutral-900 dark:active:text-neutral-900">back to dashboard</Link>
+          <Link
+            to={"/company/dashboard"}
+            className="inline-block rounded-full border-2 border-neutral-800 px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-neutral-800 transition duration-150 ease-in-out hover:border-neutral-800 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-800 focus:border-neutral-800 focus:text-neutral-800 focus:outline-none focus:ring-0 active:border-neutral-900 active:text-neutral-900 dark:border-neutral-900 dark:text-neutral-900 dark:hover:border-neutral-900 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10 dark:hover:text-neutral-900 dark:focus:border-neutral-900 dark:focus:text-neutral-900 dark:active:border-neutral-900 dark:active:text-neutral-900"
+          >
+            back to dashboard
+          </Link>
         </p>
       </div>
       <div>
         <form onSubmit={onSubmitHandler}>
-          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"><p className="text-xl font-medium">Job Title</p></label>
+          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            <p className="text-xl font-medium">Job Title</p>
+          </label>
           {error.jobTitle ? <p>{error.jobTitle.message}</p> : null}
           <input
             type="text"
@@ -116,34 +125,34 @@ const JobUpdate = () => {
             <p className="text-xl font-medium">Select Languages Required</p>
             <input
               type="checkbox"
-              name="java"
-              value="java"
+              name="Java"
+              value="Java"
               onChange={handleLanguagesCheckedBoxes}
-              checked={job.languages.includes("java")}
+              checked={job.languages.includes("Java")}
             />
             <label>Java</label>
             <input
               type="checkbox"
               name="javascript"
-              value="javascript"
+              value="JavaScript"
               onChange={handleLanguagesCheckedBoxes}
-              checked={job.languages.includes("javascript")}
+              checked={job.languages.includes("JavaScript")}
             />
             <label>JavaScript</label>
             <input
               type="checkbox"
               name="python"
-              value="python"
+              value="Python"
               onChange={handleLanguagesCheckedBoxes}
-              checked={job.languages.includes("python")}
+              checked={job.languages.includes("Python")}
             />
             <label>Python</label>
             <input
               type="checkbox"
               name="typeScript"
-              value="typeScript"
+              value="TypeScript"
               onChange={handleLanguagesCheckedBoxes}
-              checked={job.languages.includes("typeScript")}
+              checked={job.languages.includes("TypeScript")}
             />
             <label>TypeScript</label>
           </div>
@@ -152,33 +161,33 @@ const JobUpdate = () => {
             <input
               type="checkbox"
               name="flask"
-              value="flask"
+              value="Flask"
               onChange={handleFrameworksCheckedBoxes}
-              checked={job.frameworks.includes("flask")}
+              checked={job.frameworks.includes("Flask")}
             />
             <label>Flask</label>
             <input
               type="checkbox"
               name="django"
-              value="django"
+              value="Django"
               onChange={handleFrameworksCheckedBoxes}
-              checked={job.frameworks.includes("django")}
+              checked={job.frameworks.includes("Django")}
             />
             <label>Django</label>
             <input
               type="checkbox"
               name="springBoot"
-              value="springBoot"
+              value="SpringBoot"
               onChange={handleFrameworksCheckedBoxes}
-              checked={job.frameworks.includes("springBoot")}
+              checked={job.frameworks.includes("SpringBoot")}
             />
             <label>Spring Boot</label>
             <input
               type="checkbox"
               name="react"
-              value="react"
+              value="React"
               onChange={handleFrameworksCheckedBoxes}
-              checked={job.frameworks.includes("react")}
+              checked={job.frameworks.includes("React")}
             />
             <label>React</label>
           </div>
@@ -195,8 +204,12 @@ const JobUpdate = () => {
               onChange={handleVals}
             />
             <input type="hidden" name="companyId" value={currentUser._id} />
-            <button type="submit"
-                    className="rounded bg-neutral-800 px-6 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-50 shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] transition duration-150 ease-in-out hover:bg-neutral-800 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:bg-neutral-800 focus:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:outline-none focus:ring-0 active:bg-neutral-900 active:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] dark:bg-neutral-900 dark:shadow-[0_4px_9px_-4px_#030202] dark:hover:bg-neutral-900 dark:hover:shadow-[0_8px_9px_-4px_rgba(3,2,2,0.3),0_4px_18px_0_rgba(3,2,2,0.2)] dark:focus:bg-neutral-900 dark:focus:shadow-[0_8px_9px_-4px_rgba(3,2,2,0.3),0_4px_18px_0_rgba(3,2,2,0.2)] dark:active:bg-neutral-900 dark:active:shadow-[0_8px_9px_-4px_rgba(3,2,2,0.3),0_4px_18px_0_rgba(3,2,2,0.2)]">Update This Job</button>
+            <button
+              type="submit"
+              className="rounded bg-neutral-800 px-6 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-50 shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] transition duration-150 ease-in-out hover:bg-neutral-800 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:bg-neutral-800 focus:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:outline-none focus:ring-0 active:bg-neutral-900 active:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] dark:bg-neutral-900 dark:shadow-[0_4px_9px_-4px_#030202] dark:hover:bg-neutral-900 dark:hover:shadow-[0_8px_9px_-4px_rgba(3,2,2,0.3),0_4px_18px_0_rgba(3,2,2,0.2)] dark:focus:bg-neutral-900 dark:focus:shadow-[0_8px_9px_-4px_rgba(3,2,2,0.3),0_4px_18px_0_rgba(3,2,2,0.2)] dark:active:bg-neutral-900 dark:active:shadow-[0_8px_9px_-4px_rgba(3,2,2,0.3),0_4px_18px_0_rgba(3,2,2,0.2)]"
+            >
+              Update This Job
+            </button>
           </div>
         </form>
       </div>
