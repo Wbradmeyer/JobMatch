@@ -65,13 +65,13 @@ const JobView = () => {
 
   return (
     <div className="ml-10">
-      <div className="flex justify-center w-1/2 mx-auto my-10">
+      <div>
         <div>
-          <div>
+          <div className="flex justify-start w-1/2 mx-auto my-5">
             <h1 className="text-4xl font-bold sub">{thisJob.jobTitle}</h1>
           </div>
-          <div className="flex justify-center gap-48 mt-10">
-            <div className="w-3/4">
+          <div className="flex justify-start w-1/2 mx-auto my-5">
+            <div className="w-1/2">
               <p className="text-xl font-medium">Job Description:</p>
               <p>{thisJob.description}</p>
             </div>
@@ -80,21 +80,23 @@ const JobView = () => {
               <p>{currentUser.location}</p>
             </div>
           </div>
-        </div>
-      </div>
-      <div className="flex justify-center gap-48 mt-10">
-        <div>
-          <p className="text-xl font-medium">Languages Required</p>
-          {thisJob.languages && thisJob.languages.join(", ")}
-        </div>
-        <div>
-          <p className="text-xl font-medium">Frameworks Required</p>
-          {thisJob.frameworks && thisJob.frameworks.join(", ")}
+          <div className="flex justify-start w-1/2 mx-auto my-5">
+            <div className="w-1/2">
+              <p className="text-xl font-medium">Languages Required:</p>
+              {thisJob.languages && thisJob.languages.join(", ")}
+            </div>
+            <div className="w-1/2">
+              <p className="text-xl font-medium">Frameworks Required:</p>
+              {thisJob.frameworks && thisJob.frameworks.join(", ")}
+            </div>
+          </div>
         </div>
       </div>
       {thisJob.companyId == currentUser._id ? (
         <div>
-          <h3 className="text-xl font-medium">Available Talent</h3>
+          <div className="flex justify-start w-1/2 mx-auto mt-5 mb-2">
+            <h3 className="text-xl font-medium">Available Talent</h3>
+          </div>
           <div className="relative overflow-x-auto flex justify-center">
             <table className="w-1/2 text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
               <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -116,7 +118,7 @@ const JobView = () => {
               </tbody>
             </table>
           </div>
-          <div className="flex justify-around w-1/2 mx-auto">
+          <div className="flex justify-around w-1/2 mx-auto my-5">
             <button className="font-medium text-blue-600 dark:text-blue-500 hover:underline">
               <Link to={`/jobs/update/${id}`}>Edit Job Post</Link>
             </button>
@@ -126,13 +128,13 @@ const JobView = () => {
             >
               Delete Job
             </button>
-            <button>
+            <button className="border-2 border-black rounded-xl px-2 py-2 bg-amber-200">
               <Link to={"/company/dashboard"}>Back to Dashboard</Link>
             </button>
           </div>
         </div>
       ) : (
-        <button>
+        <button className="flex justify-start w-1/2 mx-auto my-5">
           <Link to={"/seeker/dashboard"}>Back to Dashboard</Link>
         </button>
       )}
