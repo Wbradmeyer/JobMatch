@@ -104,28 +104,28 @@ const JobCreate = () => {
             <input
               type="checkbox"
               name="java"
-              value="java"
+              value={"Java"}
               onChange={handleLanguagesCheckedBoxes}
             />
             <label>Java</label>
             <input
               type="checkbox"
               name="javascript"
-              value="javascript"
+              value={"JavaScript"}
               onChange={handleLanguagesCheckedBoxes}
             />
             <label>JavaScript</label>
             <input
               type="checkbox"
               name="python"
-              value="python"
+              value={"Python"}
               onChange={handleLanguagesCheckedBoxes}
             />
             <label>Python</label>
             <input
               type="checkbox"
               name="typeScript"
-              value="typeScript"
+              value={"TypeScript"}
               onChange={handleLanguagesCheckedBoxes}
             />
             <label>TypeScript</label>
@@ -135,28 +135,28 @@ const JobCreate = () => {
             <input
               type="checkbox"
               name="flask"
-              value="flask"
+              value={"Flask"}
               onChange={handleFrameworksCheckedBoxes}
             />
             <label>Flask</label>
             <input
               type="checkbox"
               name="django"
-              value="django"
+              value={"Django"}
               onChange={handleFrameworksCheckedBoxes}
             />
             <label>Django</label>
             <input
               type="checkbox"
               name="springBoot"
-              value="springBoot"
+              value={"SpringBoot"}
               onChange={handleFrameworksCheckedBoxes}
             />
             <label>Spring Boot</label>
             <input
               type="checkbox"
               name="react"
-              value="react"
+              value={"React"}
               onChange={handleFrameworksCheckedBoxes}
             />
             <label>React</label>&nbsp;&nbsp;
