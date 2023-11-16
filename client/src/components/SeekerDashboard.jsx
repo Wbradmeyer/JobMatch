@@ -54,8 +54,9 @@ const SeekerDashboard = () => {
               count++;
             }
           }
+          const percentage = combinedJobSkills.length != 0 ? Math.ceil((count / combinedJobSkills.length) * 100) : 0
           percents.push(
-            `${Math.ceil((count / combinedJobSkills.length) * 100)}%`
+            `${percentage}%`
           );
         }
         setMatches(percents);
