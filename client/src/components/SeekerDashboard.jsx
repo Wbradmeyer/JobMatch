@@ -4,7 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 const SeekerDashboard = () => {
-  console.log("Test")
+  console.log("Test");
   const { currentUser, setCurrentUser } = useContext(userContext);
   const [allJobs, setAllJobs] = useState([]);
   const [allCompanies, setAllCompanies] = useState([]);
@@ -13,7 +13,7 @@ const SeekerDashboard = () => {
   );
   const navigate = useNavigate();
   const [matches, setMatches] = useState([]);
-  console.log(currentUser)
+  console.log(currentUser);
   // const [interestedJobs, setInterestedJobs] = useState([]);
   // const [filteredJobs, setFilteredJobs] = useState([]);
   // const { id } = useParams()
@@ -54,10 +54,11 @@ const SeekerDashboard = () => {
               count++;
             }
           }
-          const percentage = combinedJobSkills.length != 0 ? Math.ceil((count / combinedJobSkills.length) * 100) : 0
-          percents.push(
-            `${percentage}%`
-          );
+          const percentage =
+            combinedJobSkills.length != 0
+              ? Math.ceil((count / combinedJobSkills.length) * 100)
+              : 0;
+          percents.push(`${percentage}%`);
         }
         setMatches(percents);
       })
@@ -101,12 +102,13 @@ const SeekerDashboard = () => {
         <Link
           to={"/"}
           onClick={logoutUser}
-          className="font-medium text-xl text-blue-600 dark:text-blue-500 hover:underline"
+          className="font-medium text-xl text-blue-600 dark:text-blue-500 hover:underline py-2 px-2 bg-slate-400 rounded-lg"
         >
           Logout
         </Link>
       </div>
-      <div className="flex justify-around w-3/4 mx-auto my-10">
+      {/* put a transparent background behind this */}
+      <div className="flex justify-around w-3/4 mx-auto my-10 py-10 bg-white/60 rounded-lg">
         <div>
           <h2 className="text-4xl font-bold sub">{currentUser.name}</h2>
           <div>

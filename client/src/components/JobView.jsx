@@ -64,8 +64,8 @@ const JobView = () => {
   };
 
   return (
-    <div className="ml-10">
-      <div>
+    <div className="mx-4 my-1">
+      <div className="bg-white/60 py-1">
         <div>
           <div className="flex justify-start w-1/2 mx-auto my-5">
             <h1 className="text-4xl font-bold sub">{thisJob.jobTitle}</h1>
