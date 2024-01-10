@@ -64,9 +64,9 @@ const JobView = () => {
   };
 
   return (
-    <div className="mx-4 my-1">
-      <div className="bg-white/60 py-1">
-        <div>
+    <div className="mx-10 my-4">
+      <div>
+        <div className="bg-white/60 py-1 rounded-lg">
           <div className="flex justify-start w-1/2 mx-auto my-5">
             <h1 className="text-4xl font-bold sub">{thisJob.jobTitle}</h1>
           </div>
@@ -134,7 +134,7 @@ const JobView = () => {
           </div>
         </div>
       ) : (
-        <button className="flex justify-start w-1/2 mx-auto my-5">
+        <button className="flex justify-start my-5 font-medium text-xl text-blue-600 dark:text-blue-500 hover:underline py-2 px-2 bg-slate-400 rounded-lg">
           <Link to={"/seeker/dashboard"}>Back to Dashboard</Link>
         </button>
       )}

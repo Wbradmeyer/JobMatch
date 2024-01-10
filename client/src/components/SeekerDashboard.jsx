@@ -108,7 +108,7 @@ const SeekerDashboard = () => {
         </Link>
       </div>
       {/* put a transparent background behind this */}
-      <div className="flex justify-around w-3/4 mx-auto my-10 py-10 bg-white/60 rounded-lg">
+      <div className="flex justify-around w-1/2 mx-auto my-10 py-10 bg-white/60 rounded-lg">
         <div>
           <h2 className="text-4xl font-bold sub">{currentUser.name}</h2>
           <div>
@@ -146,7 +146,7 @@ const SeekerDashboard = () => {
       </div>
       <div className="relative overflow-x-auto flex justify-center">
         {/* Add filter button for interested jobs here */}
-        <table className="w-3/4 text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <table className="w-1/2 text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
               <th className="px-6 py-3">Jobs Available</th>
