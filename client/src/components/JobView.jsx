@@ -64,13 +64,13 @@ const JobView = () => {
   };
 
   return (
-    <div className="mx-10 my-4">
+    <div className="ml-10 my-4">
       <div>
-        <div className="bg-white/60 py-1 rounded-lg">
-          <div className="flex justify-start w-1/2 mx-auto my-5">
+        <div className="w-3/4 mx-auto px-10 bg-white/60 py-1 rounded-lg">
+          <div className="flex justify-start mx-auto my-5">
             <h1 className="text-4xl font-bold sub">{thisJob.jobTitle}</h1>
           </div>
-          <div className="flex justify-start w-1/2 mx-auto my-5">
+          <div className="flex justify-start mx-auto my-5">
             <div className="w-1/2">
               <p className="text-xl font-medium">Job Description:</p>
               <p>{thisJob.description}</p>
@@ -80,7 +80,7 @@ const JobView = () => {
               <p>{currentUser.location}</p>
             </div>
           </div>
-          <div className="flex justify-start w-1/2 mx-auto my-5">
+          <div className="flex justify-start mx-auto my-5">
             <div className="w-1/2">
               <p className="text-xl font-medium">Languages Required:</p>
               {thisJob.languages && thisJob.languages.join(", ")}
