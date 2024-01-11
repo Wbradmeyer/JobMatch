@@ -98,7 +98,7 @@ const JobUpdate = () => {
         <h1 className="mb-2 mt-0 text-5xl font-medium leading-tight">
           Edit This Job
         </h1>
-        <div className="flex justify-end w-1/2 mx-auto">
+        <div className="flex justify-end w-1/4">
           <p className="text-sm font-medium text-gray-900">
             <Link
               to={"/company/dashboard"}
@@ -109,106 +109,113 @@ const JobUpdate = () => {
           </p>
         </div>
       </div>
-      <div>
+      <div className="w-1/2 bg-white/80 rounded-lg px-10 py-5">
         <form onSubmit={onSubmitHandler}>
-          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+          <label className="mb-2 text-sm font-medium text-gray-900 dark:text-white">
             <p className="text-xl font-medium">Job Title</p>
           </label>
           {error.jobTitle ? <p>{error.jobTitle.message}</p> : null}
           <input
             type="text"
             name="jobTitle"
-            className="border border-black text-sm rounded-lg  focus:border-blue-500 block w-full w-auto p-2.5"
+            className="border border-black text-sm rounded-lg w-full focus:border-blue-500 block p-2.5"
             value={job.jobTitle}
             onChange={handleVals}
           />
           {/* if lang and frame in job, make checked to start */}
-          <div className="flex gap-4 mt-10">
+          <div className="mt-5">
             <p className="text-xl font-medium">Select Languages Required</p>
             <input
               type="checkbox"
               name="Java"
               value="Java"
+              className="mx-1"
               onChange={handleLanguagesCheckedBoxes}
               checked={job.languages.includes("Java")}
             />
-            <label>Java</label>
+            <label className="mr-5">Java</label>
             <input
               type="checkbox"
               name="javascript"
               value="JavaScript"
+              className="mx-1"
               onChange={handleLanguagesCheckedBoxes}
               checked={job.languages.includes("JavaScript")}
             />
-            <label>JavaScript</label>
+            <label className="mr-5">JavaScript</label>
             <input
               type="checkbox"
               name="python"
               value="Python"
+              className="mx-1"
               onChange={handleLanguagesCheckedBoxes}
               checked={job.languages.includes("Python")}
             />
-            <label>Python</label>
+            <label className="mr-5">Python</label>
             <input
               type="checkbox"
               name="typeScript"
               value="TypeScript"
+              className="mx-1"
               onChange={handleLanguagesCheckedBoxes}
               checked={job.languages.includes("TypeScript")}
             />
-            <label>TypeScript</label>
+            <label className="mr-5">TypeScript</label>
           </div>
-          <div className="flex gap-4 mt-10">
+          <div className="mt-5">
             <p className="text-xl font-medium">Select Frameworks Required</p>
             <input
               type="checkbox"
               name="flask"
               value="Flask"
+              className="mx-1"
               onChange={handleFrameworksCheckedBoxes}
               checked={job.frameworks.includes("Flask")}
             />
-            <label>Flask</label>
+            <label className="mr-5">Flask</label>
             <input
               type="checkbox"
               name="django"
               value="Django"
+              className="mx-1"
               onChange={handleFrameworksCheckedBoxes}
               checked={job.frameworks.includes("Django")}
             />
-            <label>Django</label>
+            <label className="mr-5">Django</label>
             <input
               type="checkbox"
               name="springBoot"
               value="SpringBoot"
+              className="mx-1"
               onChange={handleFrameworksCheckedBoxes}
               checked={job.frameworks.includes("SpringBoot")}
             />
-            <label>Spring Boot</label>
+            <label className="mr-5">Spring Boot</label>
             <input
               type="checkbox"
               name="react"
               value="React"
+              className="mx-1"
               onChange={handleFrameworksCheckedBoxes}
               checked={job.frameworks.includes("React")}
             />
-            <label>React</label>
+            <label className="mr-5">React</label>
           </div>
-          <div className="flex gap-4 mt-10">
+          <div className="mt-5">
             <label className="text-xl font-medium">Description</label>
             {error.description ? <p>{error.description.message}</p> : null}
             <textarea
               type="text"
               name="description"
-              cols="65"
               rows="5"
-              className="border border-black text-sm rounded-lg  focus:border-blue-500 block w-full w-auto p-2.5"
+              className="border border-black text-sm rounded-lg focus:border-blue-500 block w-full p-2.5"
               value={job.description}
               onChange={handleVals}
             />
             <input type="hidden" name="companyId" value={currentUser._id} />
             <button
               type="submit"
-              className="rounded bg-neutral-800 px-6 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-50 shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] transition duration-150 ease-in-out hover:bg-neutral-800 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:bg-neutral-800 focus:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:outline-none focus:ring-0 active:bg-neutral-900 active:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] dark:bg-neutral-900 dark:shadow-[0_4px_9px_-4px_#030202] dark:hover:bg-neutral-900 dark:hover:shadow-[0_8px_9px_-4px_rgba(3,2,2,0.3),0_4px_18px_0_rgba(3,2,2,0.2)] dark:focus:bg-neutral-900 dark:focus:shadow-[0_8px_9px_-4px_rgba(3,2,2,0.3),0_4px_18px_0_rgba(3,2,2,0.2)] dark:active:bg-neutral-900 dark:active:shadow-[0_8px_9px_-4px_rgba(3,2,2,0.3),0_4px_18px_0_rgba(3,2,2,0.2)]"
+              className="mt-5 bg-sky-300 hover:bg-sky-400 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
             >
               Update This Job
             </button>

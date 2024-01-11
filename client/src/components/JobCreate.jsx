@@ -83,102 +83,127 @@ const JobCreate = () => {
 
   return (
     <div className="ml-10">
-      {/* nav-bar */}      
-        <h1 className="mb-2 mt-0 text-5xl font-medium leading-tight">Post a New Job</h1>
-        <div className="flex justify-end w-3/4 mx-auto">
-        <p className="text-sm font-medium  text-gray-900">
-          <Link to={"/company/dashboard"}   className="inline-block rounded-full border-2 border-neutral-800 px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-neutral-800 transition duration-150 ease-in-out hover:border-neutral-800 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-800 focus:border-neutral-800 focus:text-neutral-800 focus:outline-none focus:ring-0 active:border-neutral-900 active:text-neutral-900 dark:border-neutral-900 dark:text-neutral-900 dark:hover:border-neutral-900 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10 dark:hover:text-neutral-900 dark:focus:border-neutral-900 dark:focus:text-neutral-900 dark:active:border-neutral-900 dark:active:text-neutral-900">
-            back to dashboard
-          </Link>
-        </p>&nbsp;&nbsp;
+      {/* nav-bar */}
+      <div className="flex items-center my-4">
+        <h1 className="mb-2 mt-0 text-5xl font-medium leading-tight">
+          Post a New Job
+        </h1>
+        <div className="flex justify-end w-1/4">
+          <p className="text-sm font-medium text-gray-900">
+            <Link
+              to={"/company/dashboard"}
+              className="my-5 font-medium text-xl text-blue-600 dark:text-blue-500 hover:underline py-2 px-2 bg-slate-400 rounded-lg"
+            >
+              Back to Dashboard
+            </Link>
+          </p>
+        </div>
+        &nbsp;&nbsp;
       </div>
-      <div >
+      <div className="w-1/2 bg-white/80 rounded-lg px-10 py-5">
         <form onSubmit={onSubmitHandler}>
-          <label
-          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          ><p className="text-xl font-medium">Job Title</p> </label>
+          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            <p className="text-xl font-medium">Job Title</p>{" "}
+          </label>
           {error.jobTitle ? <p>{error.jobTitle.message}</p> : null}
-          <input type="text" className="border border-black text-sm rounded-lg  focus:border-blue-500 block w-full w-auto p-2.5" name="jobTitle" onChange={handleVals} />
-          <div className="flex gap-4 mt-10">
+          <input
+            type="text"
+            className="border border-black text-sm rounded-lg focus:border-blue-500 block w-full p-2.5"
+            name="jobTitle"
+            onChange={handleVals}
+          />
+          <div className="mt-5">
             <p className="text-xl font-medium">Select Languages Required</p>
             <input
               type="checkbox"
               name="java"
               value={"Java"}
+              className="mx-1"
               onChange={handleLanguagesCheckedBoxes}
             />
-            <label>Java</label>
+            <label className="mr-5">Java</label>
             <input
               type="checkbox"
               name="javascript"
               value={"JavaScript"}
+              className="mx-1"
               onChange={handleLanguagesCheckedBoxes}
             />
-            <label>JavaScript</label>
+            <label className="mr-5">JavaScript</label>
             <input
               type="checkbox"
               name="python"
               value={"Python"}
+              className="mx-1"
               onChange={handleLanguagesCheckedBoxes}
             />
-            <label>Python</label>
+            <label className="mr-5">Python</label>
             <input
               type="checkbox"
               name="typeScript"
               value={"TypeScript"}
+              className="mx-1"
               onChange={handleLanguagesCheckedBoxes}
             />
-            <label>TypeScript</label>
+            <label className="mr-5">TypeScript</label>
           </div>
-          <div className="flex gap-4 mt-10">
+          <div className="mt-5">
             <p className="text-xl font-medium">Select Frameworks Required</p>
             <input
               type="checkbox"
               name="flask"
               value={"Flask"}
+              className="mx-1"
               onChange={handleFrameworksCheckedBoxes}
             />
-            <label>Flask</label>
+            <label className="mr-5">Flask</label>
             <input
               type="checkbox"
               name="django"
               value={"Django"}
+              className="mx-1"
               onChange={handleFrameworksCheckedBoxes}
             />
-            <label>Django</label>
+            <label className="mr-5">Django</label>
             <input
               type="checkbox"
               name="springBoot"
               value={"SpringBoot"}
+              className="mx-1"
               onChange={handleFrameworksCheckedBoxes}
             />
-            <label>Spring Boot</label>
+            <label className="mr-5">Spring Boot</label>
             <input
               type="checkbox"
               name="react"
               value={"React"}
+              className="mx-1"
               onChange={handleFrameworksCheckedBoxes}
             />
-            <label>React</label>&nbsp;&nbsp;
+            <label className="mr-5">React</label>&nbsp;&nbsp;
           </div>
-          
-          <div className="flex gap-4 mt-10">
-            <label
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> <p className="text-xl font-medium">Description </p></label>
+
+          <div className="mt-5">
+            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              {" "}
+              <p className="text-xl font-medium">Description </p>
+            </label>
             {error.description ? <p>{error.description.message}</p> : null}
             <textarea
               type="text"
               name="description"
-              cols="65"
               rows="5"
-              className="border border-black text-sm rounded-lg  focus:border-blue-500 block w-full w-auto p-2.5"
+              className="border border-black text-sm rounded-lg  focus:border-blue-500 block w-full p-2.5"
               onChange={handleVals}
             />
 
             <input type="hidden" name="companyId" value={currentUser._id} />
-            <button type="submit"
-                    className="rounded bg-neutral-800 px-6 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-50 shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] transition duration-150 ease-in-out hover:bg-neutral-800 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:bg-neutral-800 focus:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:outline-none focus:ring-0 active:bg-neutral-900 active:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] dark:bg-neutral-900 dark:shadow-[0_4px_9px_-4px_#030202] dark:hover:bg-neutral-900 dark:hover:shadow-[0_8px_9px_-4px_rgba(3,2,2,0.3),0_4px_18px_0_rgba(3,2,2,0.2)] dark:focus:bg-neutral-900 dark:focus:shadow-[0_8px_9px_-4px_rgba(3,2,2,0.3),0_4px_18px_0_rgba(3,2,2,0.2)] dark:active:bg-neutral-900 dark:active:shadow-[0_8px_9px_-4px_rgba(3,2,2,0.3),0_4px_18px_0_rgba(3,2,2,0.2)]"                    
-            >Post This Job</button>
+            <button
+              type="submit"
+              className="mt-5 bg-sky-300 hover:bg-sky-400 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+            >
+              Post This Job
+            </button>
           </div>
         </form>
       </div>
