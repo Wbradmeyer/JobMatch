@@ -98,7 +98,7 @@ const SeekerDashboard = () => {
 
   return (
     <div className="ml-10">
-      <div className="flex justify-end w-3/4 mx-auto">
+      <div className="flex justify-end w-1/2 mx-auto">
         <Link
           to={"/"}
           onClick={logoutUser}
@@ -108,37 +108,29 @@ const SeekerDashboard = () => {
         </Link>
       </div>
       {/* put a transparent background behind this */}
-      <div className="flex justify-around w-1/2 mx-auto my-10 py-10 bg-white/60 rounded-lg">
+      <div className="flex justify-around w-1/2 mx-auto my-5 py-5 bg-white/60 rounded-lg">
         <div>
-          <h2 className="text-4xl font-bold sub">{currentUser.name}</h2>
+          <h2 className="text-4xl font-bold sub my-3">{currentUser.name}</h2>
           <div>
             <p className="text-xl font-medium">Bio:</p>
             <p>{currentUser.bio}</p>
           </div>
           <div>
-            <p className="text-xl font-medium">Location:</p>
+            <p className="text-xl font-medium mt-3">Location:</p>
             <p>{currentUser.location}</p>
           </div>
         </div>
         <div>
-          <p className="text-xl font-medium">Skills/Experience:</p>
-          <div className="flex justify-evenly">
-            <div>
+          <p className="text-xl font-medium mt-16">Skills/Experience:</p>
+          <div className="flex justify-start">
+            <div className="w-1/2">
               {currentUser.languages.map((language, index) => {
-                return (
-                  <p className="mt-5" key={index}>
-                    {language}
-                  </p>
-                );
+                return <p key={index}>{language}</p>;
               })}
             </div>
-            <div>
+            <div className="w-1/2">
               {currentUser.frameworks.map((framework, index) => {
-                return (
-                  <p className="mt-5" key={index}>
-                    {framework}
-                  </p>
-                );
+                return <p key={index}>{framework}</p>;
               })}
             </div>
           </div>

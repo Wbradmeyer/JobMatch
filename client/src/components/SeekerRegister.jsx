@@ -123,8 +123,8 @@ const SeekerRegister = () => {
           </h2>
           <div>
             <form className="w-full max-w-lg" onSubmit={handleRegisterSubmit}>
-              <div className="container mx-auto my-20">
-                <div className="col">
+              <div className="container mx-auto my-5">
+                <div className="col mr-2">
                   <div>
                     <label
                       htmlFor="name"
@@ -182,7 +182,7 @@ const SeekerRegister = () => {
                   </div>
                 </div>
 
-                <div className="col-span-2">
+                <div className="col ml-2">
                   <div>
                     <label
                       htmlFor="email"
@@ -240,17 +240,14 @@ const SeekerRegister = () => {
                     ) : null}
                   </div>
                   &nbsp;
-                  <div>
-                    <button className="w-full mt-5 bg-sky-300 hover:bg-sky-400 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                      Register
-                    </button>
-                  </div>
                 </div>
               </div>
-              <div className="flex justify-evenly">
-                <p className="text-xl font-medium">Languages</p>
-                <div>
-                  <label htmlFor="java">Java</label>
+              <p className="text-xl font-medium">Languages</p>
+              <div className="flex justify-start">
+                <div className="mx-3">
+                  <label htmlFor="java" className="mr-1">
+                    Java
+                  </label>
                   <input
                     type="checkbox"
                     value={"Java"}
@@ -259,8 +256,10 @@ const SeekerRegister = () => {
                     onChange={handleLanguagesCheckedBoxes}
                   />
                 </div>
-                <div>
-                  <label htmlFor="javaScript">JavaScript</label>
+                <div className="mx-3">
+                  <label htmlFor="javaScript" className="mr-1">
+                    JavaScript
+                  </label>
                   <input
                     type="checkbox"
                     value={"JavaScript"}
@@ -269,8 +268,10 @@ const SeekerRegister = () => {
                     onChange={handleLanguagesCheckedBoxes}
                   />
                 </div>
-                <div>
-                  <label htmlFor="python">Python</label>
+                <div className="mx-3">
+                  <label htmlFor="python" className="mr-1">
+                    Python
+                  </label>
                   <input
                     type="checkbox"
                     value={"Python"}
@@ -279,8 +280,10 @@ const SeekerRegister = () => {
                     onChange={handleLanguagesCheckedBoxes}
                   />
                 </div>
-                <div>
-                  <label htmlFor="typeScript">TypeScript</label>
+                <div className="mx-3">
+                  <label htmlFor="typeScript" className="mr-1">
+                    TypeScript
+                  </label>
                   <input
                     type="checkbox"
                     value={"TypeScript"}
@@ -291,10 +294,12 @@ const SeekerRegister = () => {
                 </div>
               </div>
               &nbsp;
-              <div className="flex justify-evenly">
-                <p className="text-xl font-medium">Frameworks</p>
-                <div>
-                  <label htmlFor="flask">Flask</label>
+              <p className="text-xl font-medium">Frameworks</p>
+              <div className="flex justify-start">
+                <div className="mx-3">
+                  <label htmlFor="flask" className="mr-1">
+                    Flask
+                  </label>
                   <input
                     type="checkbox"
                     value={"Flask"}
@@ -303,8 +308,10 @@ const SeekerRegister = () => {
                     onChange={handleFrameworksCheckedBoxes}
                   />
                 </div>
-                <div>
-                  <label htmlFor="django">Django</label>
+                <div className="mx-3">
+                  <label htmlFor="django" className="mr-1">
+                    Django
+                  </label>
                   <input
                     type="checkbox"
                     value={"Django"}
@@ -313,8 +320,10 @@ const SeekerRegister = () => {
                     onChange={handleFrameworksCheckedBoxes}
                   />
                 </div>
-                <div>
-                  <label htmlFor="springBoot">SpringBoot</label>
+                <div className="mx-3">
+                  <label htmlFor="springBoot" className="mr-1">
+                    SpringBoot
+                  </label>
                   <input
                     type="checkbox"
                     value={"SpringBoot"}
@@ -323,8 +332,10 @@ const SeekerRegister = () => {
                     onChange={handleFrameworksCheckedBoxes}
                   />
                 </div>
-                <div>
-                  <label htmlFor="react">React</label>
+                <div className="mx-3">
+                  <label htmlFor="react" className="mr-1">
+                    React
+                  </label>
                   <input
                     type="checkbox"
                     value={"React"}
@@ -333,6 +344,11 @@ const SeekerRegister = () => {
                     onChange={handleFrameworksCheckedBoxes}
                   />
                 </div>
+              </div>
+              <div>
+                <button className="w-1/4 mt-5 bg-sky-300 hover:bg-sky-400 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                  Register
+                </button>
               </div>
             </form>
           </div>

@@ -66,26 +66,26 @@ const JobView = () => {
   return (
     <div className="ml-10 my-4">
       <div>
-        <div className="w-3/4 mx-auto px-10 bg-white/60 py-1 rounded-lg">
+        <div className="w-1/2 mx-auto px-10 bg-white/60 py-1 rounded-lg">
           <div className="flex justify-start mx-auto my-5">
             <h1 className="text-4xl font-bold sub">{thisJob.jobTitle}</h1>
           </div>
           <div className="flex justify-start mx-auto my-5">
-            <div className="w-1/2">
+            <div className="w-1/2 mx-2">
               <p className="text-xl font-medium">Job Description:</p>
               <p>{thisJob.description}</p>
             </div>
-            <div>
+            <div className="w-1/2 mx-2">
               <p className="text-xl font-medium">Location:</p>
               <p>{currentUser.location}</p>
             </div>
           </div>
           <div className="flex justify-start mx-auto my-5">
-            <div className="w-1/2">
+            <div className="w-1/2 mx-2">
               <p className="text-xl font-medium">Languages Required:</p>
               {thisJob.languages && thisJob.languages.join(", ")}
             </div>
-            <div className="w-1/2">
+            <div className="w-1/2 mx-2">
               <p className="text-xl font-medium">Frameworks Required:</p>
               {thisJob.frameworks && thisJob.frameworks.join(", ")}
             </div>
@@ -119,22 +119,22 @@ const JobView = () => {
             </table>
           </div>
           <div className="flex justify-around w-1/2 mx-auto my-5">
-            <button className="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+            <button className="my-5 font-medium text-xl text-green-600 dark:text-blue-500 hover:underline py-2 px-2 bg-slate-400 rounded-lg">
               <Link to={`/jobs/update/${id}`}>Edit Job Post</Link>
             </button>
             <button
               onClick={(e) => handleDelete(e, thisJob._id)}
-              className="font-medium text-red-600 dark:text-red-500 hover:underline"
+              className="my-5 font-medium text-xl text-red-600 dark:text-red-500 hover:underline py-2 px-2 bg-slate-400 rounded-lg"
             >
               Delete Job
             </button>
-            <button className="border-2 border-black rounded-xl px-2 py-2 bg-amber-200">
+            <button className="my-5 font-medium text-xl text-blue-600 dark:text-blue-500 hover:underline py-2 px-2 bg-slate-400 rounded-lg">
               <Link to={"/company/dashboard"}>Back to Dashboard</Link>
             </button>
           </div>
         </div>
       ) : (
-        <button className="flex justify-start my-5 font-medium text-xl text-blue-600 dark:text-blue-500 hover:underline py-2 px-2 bg-slate-400 rounded-lg">
+        <button className="ml-60 flex justify-start my-5 font-medium text-xl text-blue-600 dark:text-blue-500 hover:underline py-2 px-2 bg-slate-400 rounded-lg">
           <Link to={"/seeker/dashboard"}>Back to Dashboard</Link>
         </button>
       )}
