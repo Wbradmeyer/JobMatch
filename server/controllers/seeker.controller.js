@@ -52,27 +52,6 @@ module.exports = {
         }
     },
 
-    // createSeekers: (req, res) => {    
-    //     //Seeker.create(req.body) //this can be tested from postman
-    //     console.log("body", req.body.newSeeker)
-    //     Seeker.create(req.body) // this line can be used from UI
-    //         .then(newSeeker => {res.status(200).json(newSeeker)})
-    //         .catch(err => {res.status(500).json(err), console.log(err)}) 
-    // },
-
-    // loginSeeker: (req, res) => {
-    //     const {email, password} = req.body
-    //     Seeker.findOne({email: email})
-    //         .then(seeker => {
-    //             if(seeker) {
-    //                 if(seeker.password == password) {
-    //                     res.json("success")
-    //                 }else{
-    //                     res.json("Password is incorrect")
-    //                 }
-    //             }
-    //         }) 
-    // },
     logoutSeeker: (req, res) => {
         // Cookie is not clearing - don't know why
         res.clearCookie('userToken')

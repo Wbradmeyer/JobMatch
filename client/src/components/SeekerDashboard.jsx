@@ -22,7 +22,7 @@ const SeekerDashboard = () => {
   const logoutUser = () => {
     axios
       .post(
-        "http://localhost:8000/seeker/logout",
+        "http://localhost:8000/seekers/logout",
         {},
         { withCredentials: true }
       )

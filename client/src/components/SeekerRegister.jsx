@@ -98,7 +98,7 @@ const SeekerRegister = () => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:8000/seeker/register", seekerUser, {
+      .post("http://localhost:8000/seekers/register", seekerUser, {
         withCredentials: true,
       })
       .then((res) => {
