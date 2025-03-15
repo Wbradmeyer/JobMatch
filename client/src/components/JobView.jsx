@@ -60,7 +60,7 @@ const JobView = () => {
         console.log(res);
       })
       .catch((err) => console.log(err));
-    navigate("/company/dashboard");
+    navigate("/companies/dashboard");
   };
 
   return (
@@ -129,13 +129,13 @@ const JobView = () => {
               Delete Job
             </button>
             <button className="my-5 font-medium text-xl text-blue-600 dark:text-blue-500 hover:underline py-2 px-2 bg-slate-400 rounded-lg">
-              <Link to={"/company/dashboard"}>Back to Dashboard</Link>
+              <Link to={"/companies/dashboard"}>Back to Dashboard</Link>
             </button>
           </div>
         </div>
       ) : (
         <button className="ml-60 flex justify-start my-5 font-medium text-xl text-blue-600 dark:text-blue-500 hover:underline py-2 px-2 bg-slate-400 rounded-lg">
-          <Link to={"/seeker/dashboard"}>Back to Dashboard</Link>
+          <Link to={"/seekers/dashboard"}>Back to Dashboard</Link>
         </button>
       )}
     </div>
