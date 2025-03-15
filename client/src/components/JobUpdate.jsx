@@ -84,7 +84,7 @@ const JobUpdate = () => {
       .then((res) => {
         console.log(res);
         console.log(res.data);
-        navigate("/company/dashboard");
+        navigate("/companies/dashboard");
       })
       .catch((err) => {
         console.log(err.response.data.error.errors);
@@ -101,7 +101,7 @@ const JobUpdate = () => {
         <div className="flex justify-end w-1/4">
           <p className="text-sm font-medium text-gray-900">
             <Link
-              to={"/company/dashboard"}
+              to={"/companies/dashboard"}
               className="my-5 font-medium text-xl text-blue-600 dark:text-blue-500 hover:underline py-2 px-2 bg-slate-400 rounded-lg"
             >
               Back to Dashboard
