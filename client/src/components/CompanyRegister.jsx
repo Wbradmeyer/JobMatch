@@ -27,14 +27,14 @@ const CompanyRegister = () => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:8000/company/register", companyUser, {
+      .post("http://localhost:8000/companies/register", companyUser, {
         withCredentials: true,
       })
       .then((res) => {
         console.log(res.data);
         localStorage.setItem("currentUser", JSON.stringify(res.data));
         setCurrentUser(res.data);
-        navigate("/company/dashboard");
+        navigate("/companies/dashboard");
       })
       .catch((err) => {
         console.log(err);

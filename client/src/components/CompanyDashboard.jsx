@@ -24,7 +24,7 @@ const CompanyDashboard = () => {
   const logoutUser = () => {
     axios
       .post(
-        "http://localhost:8000/company/logout",
+        "http://localhost:8000/companies/logout",
         {},
         { withCredentials: true }
       )
