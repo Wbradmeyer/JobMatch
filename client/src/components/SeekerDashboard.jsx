@@ -80,22 +80,6 @@ const SeekerDashboard = () => {
       });
   }, []);
 
-  // useEffect(() => {
-  //   if (allJobs) {
-  //     const filtered = allJobs.filter((job) => {
-  //       return (
-  //         currentUser.languages.includes(job.languages) &&
-  //         currentUser.frameworks.includes(job.frameworks)
-  //       );
-  //     });
-  //     setFilteredJobs(filtered);
-  //   }
-  // }, []);
-
-  // const handleInterestedJobsButton = (e) => {
-
-  // }
-
   return (
     <div className="ml-10">
       <div className="flex justify-end w-1/2 mx-auto">

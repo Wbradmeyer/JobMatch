@@ -20,19 +20,6 @@ const SeekerRegister = () => {
     confirmPassword: "",
   });
 
-  // const handleLanguagesCheckedBoxes = (e) => {
-  //   // console.log("Hello")
-  //   if (e.target.checked) {
-  //     console.log(e.target.checked)
-  //     setCheckedLanguages([...checkedLanguages, e.target.value])
-  //     console.log(checkedLanguages)
-  //     setSeekerUser({
-  //       ...seekerUser,
-  //       languages: checkedLanguages
-  //     })
-  //   }
-  // }
-
   const handleLanguagesCheckedBoxes = (e) => {
     if (e.target.checked) {
       setCheckedLanguages((prevLanguages) => [
@@ -53,16 +40,6 @@ const SeekerRegister = () => {
       }));
     }
   };
-
-  // const handleFrameworksCheckedBoxes = (e) => {
-  //   if (e.target.checked) {
-  //     setCheckedFrameworks([...checkedFrameworks, e.target.value])
-  //     setSeekerUser({
-  //       ...seekerUser,
-  //       frameworks: checkedFrameworks
-  //     })
-  //   }
-  // }
 
   const handleFrameworksCheckedBoxes = (e) => {
     if (e.target.checked) {
@@ -105,7 +82,7 @@ const SeekerRegister = () => {
         console.log(res.data);
         localStorage.setItem("currentUser", JSON.stringify(res.data));
         setCurrentUser(res.data);
-        navigate("/seeker/dashboard");
+        navigate("/seekers/dashboard");
       })
       .catch((err) => {
         console.log(err);

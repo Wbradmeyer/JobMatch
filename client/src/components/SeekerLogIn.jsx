@@ -29,7 +29,7 @@ const SeekerLogIn = () => {
         console.log(res.data);
         localStorage.setItem("currentUser", JSON.stringify(res.data));
         setCurrentUser(res.data);
-        navigate("/seeker/dashboard");
+        navigate("/seekers/dashboard");
       })
       .catch((err) => {
         console.log(err);
@@ -76,7 +76,7 @@ const SeekerLogIn = () => {
           </div>
           <div>
             <Link
-              to={"/seekerRegister"}
+              to={"/seekers/register"}
               className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
             >
               Job Seeker Register
