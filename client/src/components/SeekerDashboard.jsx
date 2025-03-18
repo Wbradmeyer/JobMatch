@@ -44,23 +44,42 @@ const SeekerDashboard = () => {
         setAllJobs(res.data);
 
         let percents = [];
-        for (let i = 0; i < res.data.length; i++) {
-          const combinedJobSkills = res.data[i].languages.concat(
-            res.data[i].frameworks
-          );
-          let count = 0;
-          for (let j = 0; j < combinedJobSkills.length; j++) {
-            if (combinedUserSkills.includes(combinedJobSkills[j])) {
-              count++;
-            }
-          }
+        let jobs = res.data.map((job, index) => {
+          const combinedJobSkills = job.languages.concat(job.frameworks);
+          let count = combinedJobSkills.filter((skill) =>
+            combinedUserSkills.includes(skill)
+          ).length;
           const percentage =
-            combinedJobSkills.length != 0
+            combinedJobSkills.length !== 0
               ? Math.ceil((count / combinedJobSkills.length) * 100)
               : 0;
-          percents.push(`${percentage}%`);
-        }
-        setMatches(percents);
+
+          percents.push(percentage); // Store numerical percentage
+          return { ...job, matchPercentage: percentage };
+        });
+
+        // Sort jobs by match percentage in descending order
+        jobs.sort((a, b) => b.matchPercentage - a.matchPercentage);
+
+        setAllJobs(jobs);
+        setMatches(percents.map((percent) => `${percent}%`));
+        // for (let i = 0; i < res.data.length; i++) {
+        //   const combinedJobSkills = res.data[i].languages.concat(
+        //     res.data[i].frameworks
+        //   );
+        //   let count = 0;
+        //   for (let j = 0; j < combinedJobSkills.length; j++) {
+        //     if (combinedUserSkills.includes(combinedJobSkills[j])) {
+        //       count++;
+        //     }
+        //   }
+        //   const percentage =
+        //     combinedJobSkills.length != 0
+        //       ? Math.ceil((count / combinedJobSkills.length) * 100)
+        //       : 0;
+        //   percents.push(`${percentage}%`);
+        // }
+        // setMatches(percents);
       })
       .catch((err) => {
         console.log(err);
