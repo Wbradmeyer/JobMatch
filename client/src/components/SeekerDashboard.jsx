@@ -173,7 +173,8 @@ const SeekerDashboard = () => {
                     {associatedCompany ? associatedCompany.name : "N/A"}
                   </td>
                   <td className="px-6 py-4">
-                    {matches[index]}
+                    {job.matchPercentage}
+                    {/* {matches[index]} */}
                     {/* <input type="checkbox" name="interested" id="interested" /> */}
                   </td>
                 </tr>
