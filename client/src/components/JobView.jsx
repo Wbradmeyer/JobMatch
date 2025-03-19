@@ -40,8 +40,8 @@ const JobView = () => {
             combinedJobSkills.includes(skill)
           ).length;
           const percentage =
-            combinedUserSkills.length !== 0
-              ? Math.ceil((count / combinedUserSkills.length) * 100)
+            combinedJobSkills.length !== 0
+              ? Math.ceil((count / combinedJobSkills.length) * 100)
               : 0;
           return { ...seeker, matchPercentage: percentage };
         });
