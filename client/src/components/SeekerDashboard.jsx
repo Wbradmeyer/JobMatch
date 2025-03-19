@@ -40,7 +40,6 @@ const SeekerDashboard = () => {
       .get("http://localhost:8000/jobs")
       .then((res) => {
         console.log(res.data);
-        setAllJobs(res.data);
 
         let jobs = res.data.map((job, index) => {
           const combinedJobSkills = job.languages.concat(job.frameworks);

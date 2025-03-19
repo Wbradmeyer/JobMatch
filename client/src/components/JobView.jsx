@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useMemo } from "react";
 import { userContext } from "../context/UserContext";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import axios from "axios";
@@ -9,7 +9,10 @@ const JobView = () => {
   const { currentUser, setCurrentUser } = useContext(userContext);
   const { id } = useParams();
   const [thisJob, setThisJob] = useState({});
-  const [combinedJobSkills, setCombinedJobSkills] = useState([]);
+  // const [combinedJobSkills, setCombinedJobSkills] = useState([]);
+  const combinedJobSkills = useMemo(() => {
+    return (thisJob.languages || []).concat(thisJob.frameworks || []);
+  }, [thisJob]);
   const [allSeekers, setAllSeekers] = useState([]);
   const [matches, setMatches] = useState([]);
 
@@ -29,25 +32,39 @@ const JobView = () => {
     axios
       .get("http://localhost:8000/seekers")
       .then((res) => {
-        // console.log(res.data);
-        setAllSeekers(res.data);
+        console.log(res.data);
 
-        let percents = [];
-        for (let i = 0; i < res.data.length; i++) {
-          const combinedUserSkills = res.data[i].languages.concat(
-            res.data[i].frameworks
-          );
-          let count = 0;
-          for (let j = 0; j < combinedJobSkills.length; j++) {
-            if (combinedUserSkills.includes(combinedJobSkills[j])) {
-              count++;
-            }
-          }
-          percents.push(
-            `${Math.ceil((count / combinedJobSkills.length) * 100)}%`
-          );
-        }
-        setMatches(percents);
+        let seekers = res.data.map((seeker, index) => {
+          const combinedUserSkills = seeker.languages.concat(seeker.frameworks);
+          let count = combinedUserSkills.filter((skill) =>
+            combinedJobSkills.includes(skill)
+          ).length;
+          const percentage =
+            combinedUserSkills.length !== 0
+              ? Math.ceil((count / combinedUserSkills.length) * 100)
+              : 0;
+          return { ...seeker, matchPercentage: percentage };
+        });
+
+        seekers.sort((a, b) => b.matchPercentage - a.matchPercentage);
+
+        // let percents = [];
+        // for (let i = 0; i < res.data.length; i++) {
+        //   const combinedUserSkills = res.data[i].languages.concat(
+        //     res.data[i].frameworks
+        //   );
+        //   let count = 0;
+        //   for (let j = 0; j < combinedJobSkills.length; j++) {
+        //     if (combinedUserSkills.includes(combinedJobSkills[j])) {
+        //       count++;
+        //     }
+        //   }
+        //   percents.push(
+        //     `${Math.ceil((count / combinedJobSkills.length) * 100)}%`
+        //   );
+        // }
+        // setMatches(percents);
+        setAllSeekers(seekers);
       })
       .catch((err) => console.log(err));
   }, [combinedJobSkills, allSeekers]);
@@ -112,7 +129,7 @@ const JobView = () => {
                     className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
                   >
                     <td className="px-6 py-4">{seeker.name}</td>
-                    <td className="px-6 py-4">{matches[index]}</td>
+                    <td className="px-6 py-4">{seeker.matchPercentage}</td>
                   </tr>
                 ))}
               </tbody>
