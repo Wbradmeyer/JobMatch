@@ -9,7 +9,6 @@ const JobView = () => {
   const { currentUser, setCurrentUser } = useContext(userContext);
   const { id } = useParams();
   const [thisJob, setThisJob] = useState({});
-  // const [combinedJobSkills, setCombinedJobSkills] = useState([]);
   const combinedJobSkills = useMemo(() => {
     return (thisJob.languages || []).concat(thisJob.frameworks || []);
   }, [thisJob]);
@@ -22,8 +21,6 @@ const JobView = () => {
       .then((res) => {
         console.log(res);
         setThisJob(res.data);
-        setCombinedJobSkills(res.data.languages.concat(res.data.frameworks));
-        // console.log(combinedJobSkills);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -48,22 +45,6 @@ const JobView = () => {
 
         seekers.sort((a, b) => b.matchPercentage - a.matchPercentage);
 
-        // let percents = [];
-        // for (let i = 0; i < res.data.length; i++) {
-        //   const combinedUserSkills = res.data[i].languages.concat(
-        //     res.data[i].frameworks
-        //   );
-        //   let count = 0;
-        //   for (let j = 0; j < combinedJobSkills.length; j++) {
-        //     if (combinedUserSkills.includes(combinedJobSkills[j])) {
-        //       count++;
-        //     }
-        //   }
-        //   percents.push(
-        //     `${Math.ceil((count / combinedJobSkills.length) * 100)}%`
-        //   );
-        // }
-        // setMatches(percents);
         setAllSeekers(seekers);
       })
       .catch((err) => console.log(err));
