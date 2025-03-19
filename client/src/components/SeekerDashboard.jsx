@@ -12,7 +12,6 @@ const SeekerDashboard = () => {
     return (currentUser.languages || []).concat(currentUser.frameworks || []);
   }, [currentUser]);
   const navigate = useNavigate();
-  const [matches, setMatches] = useState([]);
   console.log(currentUser);
   // const [interestedJobs, setInterestedJobs] = useState([]);
   // const [filteredJobs, setFilteredJobs] = useState([]);
@@ -43,7 +42,6 @@ const SeekerDashboard = () => {
         console.log(res.data);
         setAllJobs(res.data);
 
-        let percents = [];
         let jobs = res.data.map((job, index) => {
           const combinedJobSkills = job.languages.concat(job.frameworks);
           let count = combinedJobSkills.filter((skill) =>
@@ -53,8 +51,6 @@ const SeekerDashboard = () => {
             combinedJobSkills.length !== 0
               ? Math.ceil((count / combinedJobSkills.length) * 100)
               : 0;
-
-          percents.push(percentage); // Store numerical percentage
           return { ...job, matchPercentage: percentage };
         });
 
@@ -62,7 +58,6 @@ const SeekerDashboard = () => {
         jobs.sort((a, b) => b.matchPercentage - a.matchPercentage);
 
         setAllJobs(jobs);
-        setMatches(percents.map((percent) => `${percent}%`));
       })
       .catch((err) => {
         console.log(err);
