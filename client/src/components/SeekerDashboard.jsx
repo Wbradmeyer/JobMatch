@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useMemo } from "react";
 import { userContext } from "../context/UserContext";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
@@ -8,9 +8,9 @@ const SeekerDashboard = () => {
   const { currentUser, setCurrentUser } = useContext(userContext);
   const [allJobs, setAllJobs] = useState([]);
   const [allCompanies, setAllCompanies] = useState([]);
-  const combinedUserSkills = (currentUser.languages || []).concat(
-    currentUser.frameworks || []
-  );
+  const combinedUserSkills = useMemo(() => {
+    return (currentUser.languages || []).concat(currentUser.frameworks || []);
+  }, [currentUser]);
   const navigate = useNavigate();
   const [matches, setMatches] = useState([]);
   console.log(currentUser);
@@ -63,23 +63,6 @@ const SeekerDashboard = () => {
 
         setAllJobs(jobs);
         setMatches(percents.map((percent) => `${percent}%`));
-        // for (let i = 0; i < res.data.length; i++) {
-        //   const combinedJobSkills = res.data[i].languages.concat(
-        //     res.data[i].frameworks
-        //   );
-        //   let count = 0;
-        //   for (let j = 0; j < combinedJobSkills.length; j++) {
-        //     if (combinedUserSkills.includes(combinedJobSkills[j])) {
-        //       count++;
-        //     }
-        //   }
-        //   const percentage =
-        //     combinedJobSkills.length != 0
-        //       ? Math.ceil((count / combinedJobSkills.length) * 100)
-        //       : 0;
-        //   percents.push(`${percentage}%`);
-        // }
-        // setMatches(percents);
       })
       .catch((err) => {
         console.log(err);
@@ -167,14 +150,12 @@ const SeekerDashboard = () => {
                       </Link>
                     }
                   </th>
-                  {/* <td>{job.jobTitle}</td> */}
                   {/* For Company: If job.company._id == company._id display company.name */}
                   <td className="px-6 py-4">
                     {associatedCompany ? associatedCompany.name : "N/A"}
                   </td>
                   <td className="px-6 py-4">
                     {job.matchPercentage}
-                    {/* {matches[index]} */}
                     {/* <input type="checkbox" name="interested" id="interested" /> */}
                   </td>
                 </tr>
