@@ -67,7 +67,7 @@ const JobView = () => {
         setAllSeekers(seekers);
       })
       .catch((err) => console.log(err));
-  }, [combinedJobSkills, allSeekers]);
+  }, [combinedJobSkills]);
 
   const handleDelete = (e, id) => {
     e.preventDefault();
