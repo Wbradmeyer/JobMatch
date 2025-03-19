@@ -16,9 +16,7 @@ function App() {
       <img src={Logo} alt="Job Match Logo" className="w-1/4 mt-20 ml-20" />
       <Routes>
         <Route index element={<Home />} />
-        {/* <Route path="/seekerRegister" element={<SeekerRegister />} /> */}
         <Route path="/seekers/register" element={<SeekerRegister />} />
-        {/* <Route path="/companyRegister" element={<CompanyRegister />} /> */}
         <Route path="/companies/register" element={<CompanyRegister />} />
         <Route path="/companies/dashboard" element={<CompanyDashboard />} />
         <Route path="/seekers/dashboard" element={<SeekerDashboard />} />
