@@ -5,4 +5,6 @@ This is a site for matching ideal job candidates to ideal job posts. You can sig
 This site is built with a MERN stack:
 MongoDB, Express.js, React with Vite, Node.js
 
-Dependencies - axios, react-router-dom, 
+Dependencies
+Front-end - axios, react-router-dom
+Back-end - bcrypt, cookie-parser, cors, dotenv, express, jsonwebtoken, mongoose, validator
